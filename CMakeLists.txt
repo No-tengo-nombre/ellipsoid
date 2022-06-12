@@ -5,10 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 project(Ellipsoid VERSION 0.1)
 
 add_subdirectory(src)
+add_subdirectory(examples)
+add_subdirectory(test)
 
 add_library(GLAD "${PROJECT_SOURCE_DIR}/dependencies/GLAD/src/glad.c")
 
-add_executable("${PROJECT_NAME}" hello_world.cpp)
 target_link_libraries("${PROJECT_NAME}" PUBLIC
     GLAD
     "${PROJECT_SOURCE_DIR}/dependencies/GLFW/lib/libglfw3.a"
