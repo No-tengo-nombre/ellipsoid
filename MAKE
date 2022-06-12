@@ -1,10 +1,18 @@
+#!/bin/bash
+
+PROJECT_NAME="Ellipsoid"
+
 cmake -S . -B ./build/
 cmake --build ./build/
 
-for arg in "$@"
+while getopts "re:" arg
 do
-    case $arg in
-        -r|--run)
-            ./build/app
+    case "$arg" in
+        r)
+            ./build/src/$PROJECT_NAME
+            ;;
+        e)
+            ./build/examples/${OPTARG}/example
+            ;;
     esac
 done
