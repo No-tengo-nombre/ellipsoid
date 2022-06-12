@@ -8,7 +8,7 @@ add_subdirectory(src)
 add_subdirectory(examples)
 add_subdirectory(test)
 
-add_library(GLAD "${PROJECT_SOURCE_DIR}/dependencies/GLAD/src/glad.c")
+add_library(GLAD SHARED "${PROJECT_SOURCE_DIR}/dependencies/GLAD/src/glad.c")
 
 target_link_libraries("${PROJECT_NAME}" PUBLIC
     GLAD
@@ -17,7 +17,5 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC
 
 target_include_directories("${PROJECT_NAME}" PUBLIC
     "${PROJECT_BINARY_DIR}"
-    "${PROJECT_SOURCE_DIR}/dependencies/GLAD/include"
-    "${PROJECT_SOURCE_DIR}/dependencies/GLFW/include"
-    "${PROJECT_SOURCE_DIR}/dependencies/GLM/include"
+    "${PROJECT_SOURCE_DIR}/dependencies/*/include"
 )
