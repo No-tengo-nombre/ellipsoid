@@ -43,26 +43,26 @@ public:
     Shader();
     ~Shader();
 
-    Shader& vertex(std::string path);
-    Shader& fragment(std::string path);
+    Shader* vertex(std::string path);
+    Shader* fragment(std::string path);
 
     void use() const;
     void del() const;
 
     // Bunch of methods to set uniforms
     // TODO: Figure out a way to make this easier to work with
-    void setUniform(std::string name, int v1) const;
-    void setUniform(std::string name, int v1, int v2) const;
-    void setUniform(std::string name, int v1, int v2, int v3) const;
-    void setUniform(std::string name, int v1, int v2, int v3, int v4) const;
+    Shader const* setUniform(std::string name, int v1) const;
+    Shader const* setUniform(std::string name, int v1, int v2) const;
+    Shader const* setUniform(std::string name, int v1, int v2, int v3) const;
+    Shader const* setUniform(std::string name, int v1, int v2, int v3, int v4) const;
 
-    void setUniform(std::string name, float v1) const;
-    void setUniform(std::string name, float v1, float v2) const;
-    void setUniform(std::string name, float v1, float v2, float v3) const;
-    void setUniform(std::string name, float v1, float v2, float v3,
+    Shader const* setUniform(std::string name, float v1) const;
+    Shader const* setUniform(std::string name, float v1, float v2) const;
+    Shader const* setUniform(std::string name, float v1, float v2, float v3) const;
+    Shader const* setUniform(std::string name, float v1, float v2, float v3,
                     float v4) const;
 
-    void setUniform(std::string name, glm::mat4 v1) const;
+    Shader const* setUniform(std::string name, glm::mat4 v1) const;
 };
 
 } // namespace gl

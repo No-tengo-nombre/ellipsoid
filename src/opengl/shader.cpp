@@ -40,7 +40,7 @@ Shader::Shader() { _id = 0; }
 
 Shader::~Shader() { del(); }
 
-Shader& Shader::vertex(std::string path) {
+Shader* Shader::vertex(std::string path) {
     std::ifstream file;
     std::stringstream stream;
     std::string code;
@@ -62,10 +62,10 @@ Shader& Shader::vertex(std::string path) {
 
     Shader::verifyShader(_id, "VERTEX link error", GL_LINK_STATUS);
     glDeleteShader(_id);
-    return *this;
+    return this;
 }
 
-Shader& Shader::fragment(std::string path) {
+Shader* Shader::fragment(std::string path) {
     std::ifstream file;
     std::stringstream stream;
     std::string code;
@@ -87,7 +87,7 @@ Shader& Shader::fragment(std::string path) {
 
     Shader::verifyShader(_id, "FRAGMENT link error", GL_LINK_STATUS);
     glDeleteShader(_id);
-    return *this;
+    return this;
 }
 
 void Shader::use() const { glUseProgram(_id); }
@@ -96,43 +96,52 @@ void Shader::del() const { glDeleteShader(_id); }
 
 // Setting uniforms
 
-void Shader::setUniform(std::string name, int v1) const {
+Shader const* Shader::setUniform(std::string name, int v1) const {
     glUniform1i(glGetUniformLocation(_id, name.c_str()), v1);
+    return this;
 }
 
-void Shader::setUniform(std::string name, int v1, int v2) const {
+Shader const* Shader::setUniform(std::string name, int v1, int v2) const {
     glUniform2i(glGetUniformLocation(_id, name.c_str()), v1, v2);
+    return this;
 }
 
-void Shader::setUniform(std::string name, int v1, int v2, int v3) const {
+Shader const* Shader::setUniform(std::string name, int v1, int v2, int v3) const {
     glUniform3i(glGetUniformLocation(_id, name.c_str()), v1, v2, v3);
+    return this;
 }
 
-void Shader::setUniform(std::string name, int v1, int v2, int v3,
+Shader const* Shader::setUniform(std::string name, int v1, int v2, int v3,
                         int v4) const {
     glUniform4i(glGetUniformLocation(_id, name.c_str()), v1, v2, v3, v4);
+    return this;
 }
 
-void Shader::setUniform(std::string name, float v1) const {
+Shader const* Shader::setUniform(std::string name, float v1) const {
     glUniform1f(glGetUniformLocation(_id, name.c_str()), v1);
+    return this;
 }
 
-void Shader::setUniform(std::string name, float v1, float v2) const {
+Shader const* Shader::setUniform(std::string name, float v1, float v2) const {
     glUniform2f(glGetUniformLocation(_id, name.c_str()), v1, v2);
+    return this;
 }
 
-void Shader::setUniform(std::string name, float v1, float v2, float v3) const {
+Shader const* Shader::setUniform(std::string name, float v1, float v2, float v3) const {
     glUniform3f(glGetUniformLocation(_id, name.c_str()), v1, v2, v3);
+    return this;
 }
 
-void Shader::setUniform(std::string name, float v1, float v2, float v3,
+Shader const* Shader::setUniform(std::string name, float v1, float v2, float v3,
                         float v4) const {
     glUniform4f(glGetUniformLocation(_id, name.c_str()), v1, v2, v3, v4);
+    return this;
 }
 
-void Shader::setUniform(std::string name, glm::mat4 v1) const {
+Shader const* Shader::setUniform(std::string name, glm::mat4 v1) const {
     glUniformMatrix4fv(glGetUniformLocation(_id, name.c_str()), 1, GL_FALSE,
                        (float*)&v1);
+    return this;
 }
 
 } // namespace gl
