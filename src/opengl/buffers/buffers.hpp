@@ -1,3 +1,6 @@
+#ifndef ELLIPSOID_GL_BUFFERS_HEADER
+#define ELLIPSOID_GL_BUFFERS_HEADER
+
 #include <glad/glad.h>
 #include <vector>
 
@@ -96,7 +99,8 @@ public:
     UBO& build();
 
     void bindIndex(unsigned int index);
-    template <typename T> void bufferData(unsigned int offset, std::vector<T> data);
+    template <typename T>
+    void bufferData(unsigned int offset, std::vector<T> data);
 
     void bind() const;
     void unbind() const;
@@ -106,3 +110,5 @@ public:
 } // namespace buffers
 } // namespace gl
 } // namespace ellipsoid
+
+#endif
