@@ -13,24 +13,24 @@ UBO::UBO() {
 
 UBO::~UBO() { del(); }
 
-UBO& UBO::size(unsigned int newSize) {
+UBO* UBO::size(unsigned int newSize) {
     _size = newSize;
-    return *this;
+    return this;
 }
 
-UBO& UBO::usage(GLenum newUsage) {
+UBO* UBO::usage(GLenum newUsage) {
     _usage = newUsage;
-    return *this;
+    return this;
 }
 
-UBO& UBO::build() {
+UBO* UBO::build() {
     unsigned int ubo = 0;
     glGenBuffers(1, &ubo);
     glBindBuffer(GL_UNIFORM_BUFFER, ubo);
     glBufferData(GL_UNIFORM_BUFFER, _size, (void*)0, _usage);
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
     _id = ubo;
-    return *this;
+    return this;
 }
 
 template <typename T>

@@ -14,29 +14,29 @@ EBO::EBO() {
 
 EBO::~EBO() { del(); }
 
-EBO& EBO::count(unsigned int newCount) {
+EBO* EBO::count(unsigned int newCount) {
     _count = newCount;
-    return *this;
+    return this;
 }
 
-EBO& EBO::indices(std::vector<unsigned int> newIndices) {
+EBO* EBO::indices(std::vector<unsigned int> newIndices) {
     _indices = newIndices;
-    return *this;
+    return this;
 }
 
-EBO& EBO::usage(GLenum newUsage) {
+EBO* EBO::usage(GLenum newUsage) {
     _usage = newUsage;
-    return *this;
+    return this;
 }
 
-EBO& EBO::build() {
+EBO* EBO::build() {
     unsigned int ebo = 0;
     glGenBuffers(1, &ebo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     bufferData(_indices);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     _id = ebo;
-    return *this;
+    return this;
 }
 
 void EBO::bufferData(std::vector<unsigned int> data) {
