@@ -22,5 +22,8 @@ target_link_libraries(${PROJECT_OPENGL_NAME} PUBLIC
 
 target_include_directories(${PROJECT_OPENGL_NAME} PUBLIC
     "${PROJECT_BINARY_DIR}"
-    "${PROJECT_DEPENDENCIES_DIR}/*/include"
+    "${PROJECT_DEPENDENCIES_DIR}/GLAD/include"
+    "${PROJECT_DEPENDENCIES_DIR}/GLFW/include"
+    "${PROJECT_DEPENDENCIES_DIR}/GLM/include"
+    "${PROJECT_DEPENDENCIES_DIR}/STB/include"
 )
