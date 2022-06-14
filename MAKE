@@ -2,17 +2,25 @@
 
 PROJECT_NAME="Ellipsoid"
 
-cmake -S . -B ./build/ -G "MinGW Makefiles"
-cmake --build ./build/
+PARAMS=""
 
-while getopts "re:" arg
+while getopts "terd" arg
 do
     case "$arg" in
-        r)
-            ./build/src/$PROJECT_NAME
-            ;;
         e)
-            ./build/examples/${OPTARG}/example
+            PARAMS+=" -DELLIPSOID_BUILD_EXAMPLES=ON"
+            ;;
+        t)
+            PARAMS+=" -DELLIPSOID_BUILD_TESTS=ON"
+            ;;
+        r)
+            PARAMS+=" -DMAKE_BUILD_TYPE:STRING=Release"
+            ;;
+        d)
+            PARAMS+=" -DMAKE_BUILD_TYPE:STRING=Debug"
             ;;
     esac
 done
+
+_="$(cmake -S . -B ./build/ -G "MinGW Makefiles" $PARAMS)"
+cmake --build ./build/
