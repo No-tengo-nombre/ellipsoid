@@ -1,7 +1,7 @@
 #ifndef ELLIPSOID_GL_SHADER_HEADER
 #define ELLIPSOID_GL_SHADER_HEADER
 
-#include <glad/glad.h>
+#include <glad/gl.h>
 #include <glm/glm.hpp>
 #include <string>
 

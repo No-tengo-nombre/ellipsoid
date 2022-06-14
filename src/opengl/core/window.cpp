@@ -1,10 +1,19 @@
 #include "window.hpp"
-#include <glad/glad.h>
 #include <stdexcept>
 
 namespace ellipsoid {
 namespace gl {
 namespace core {
+
+bool Window::init() const {
+    bool glfw = glfwInit();
+    bool glad = gladLoadGL(glfwGetProcAddress);
+    return glfw && glad;
+}
+
+void Window::terminate() const {
+    glfwTerminate();
+}
 
 Window::Window() {
     _width = 640;
