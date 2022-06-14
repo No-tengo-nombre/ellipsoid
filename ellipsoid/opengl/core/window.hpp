@@ -1,5 +1,5 @@
-#ifndef ELLIPSOID_GL_WINDOW_HEADER
-#define ELLIPSOID_GL_WINDOW_HEADER
+#ifndef ELLIPSOID_GL_CORE_WINDOW_HEADER
+#define ELLIPSOID_GL_CORE_WINDOW_HEADER
 
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>

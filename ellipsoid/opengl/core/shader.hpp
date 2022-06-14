@@ -1,5 +1,5 @@
-#ifndef ELLIPSOID_GL_SHADER_HEADER
-#define ELLIPSOID_GL_SHADER_HEADER
+#ifndef ELLIPSOID_GL_CORE_SHADER_HEADER
+#define ELLIPSOID_GL_CORE_SHADER_HEADER
 
 #include <glad/gl.h>
 #include <glm/glm.hpp>
