@@ -1,5 +1,4 @@
 #include "buffers.hpp"
-#include <glad/glad.h>
 
 namespace ellipsoid {
 namespace gl {

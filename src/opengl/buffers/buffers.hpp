@@ -1,7 +1,7 @@
 #ifndef ELLIPSOID_GL_BUFFERS_BUFFERS_HEADER
 #define ELLIPSOID_GL_BUFFERS_BUFFERS_HEADER
 
-#include <glad/glad.h>
+#include <glad/gl.h>
 #include <vector>
 
 namespace ellipsoid {
