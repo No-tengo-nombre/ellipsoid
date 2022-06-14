@@ -2,6 +2,7 @@
 #define ELLIPSOID_GL_WINDOW_HEADER
 
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include <string>
 
 namespace ellipsoid {
