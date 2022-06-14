@@ -6,6 +6,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 enum WindowMode {
     Windowed,
@@ -52,6 +53,7 @@ public:
     float getTime() const;
 };
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid
 

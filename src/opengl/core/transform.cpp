@@ -6,6 +6,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 ///////////////////////////////////////////////////////////////////////////////
 //|=========================| Transform Components |========================|//
@@ -327,5 +328,6 @@ Transform& Transform::operator-=(const Transform& rhs) {
     return *this;
 }
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid

@@ -3,6 +3,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 Window::Window() {
     _width = 640;
@@ -110,5 +111,6 @@ void Window::swapBuffers() const { glfwSwapBuffers(_glfwWindow); }
 
 float Window::getTime() const { return glfwGetTime(); }
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid

@@ -9,6 +9,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 void Shader::verifyShader(unsigned int shader, std::string message) {
     Shader::verifyShader(shader, message, GL_COMPILE_STATUS);
@@ -106,13 +107,14 @@ Shader const* Shader::setUniform(std::string name, int v1, int v2) const {
     return this;
 }
 
-Shader const* Shader::setUniform(std::string name, int v1, int v2, int v3) const {
+Shader const* Shader::setUniform(std::string name, int v1, int v2,
+                                 int v3) const {
     glUniform3i(glGetUniformLocation(_id, name.c_str()), v1, v2, v3);
     return this;
 }
 
 Shader const* Shader::setUniform(std::string name, int v1, int v2, int v3,
-                        int v4) const {
+                                 int v4) const {
     glUniform4i(glGetUniformLocation(_id, name.c_str()), v1, v2, v3, v4);
     return this;
 }
@@ -127,13 +129,14 @@ Shader const* Shader::setUniform(std::string name, float v1, float v2) const {
     return this;
 }
 
-Shader const* Shader::setUniform(std::string name, float v1, float v2, float v3) const {
+Shader const* Shader::setUniform(std::string name, float v1, float v2,
+                                 float v3) const {
     glUniform3f(glGetUniformLocation(_id, name.c_str()), v1, v2, v3);
     return this;
 }
 
 Shader const* Shader::setUniform(std::string name, float v1, float v2, float v3,
-                        float v4) const {
+                                 float v4) const {
     glUniform4f(glGetUniformLocation(_id, name.c_str()), v1, v2, v3, v4);
     return this;
 }
@@ -144,5 +147,6 @@ Shader const* Shader::setUniform(std::string name, glm::mat4 v1) const {
     return this;
 }
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid

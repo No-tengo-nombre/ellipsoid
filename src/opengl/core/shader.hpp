@@ -9,6 +9,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 /* Class for a shader program */
 class Shader {
@@ -54,17 +55,20 @@ public:
     Shader const* setUniform(std::string name, int v1) const;
     Shader const* setUniform(std::string name, int v1, int v2) const;
     Shader const* setUniform(std::string name, int v1, int v2, int v3) const;
-    Shader const* setUniform(std::string name, int v1, int v2, int v3, int v4) const;
+    Shader const* setUniform(std::string name, int v1, int v2, int v3,
+                             int v4) const;
 
     Shader const* setUniform(std::string name, float v1) const;
     Shader const* setUniform(std::string name, float v1, float v2) const;
-    Shader const* setUniform(std::string name, float v1, float v2, float v3) const;
+    Shader const* setUniform(std::string name, float v1, float v2,
+                             float v3) const;
     Shader const* setUniform(std::string name, float v1, float v2, float v3,
-                    float v4) const;
+                             float v4) const;
 
     Shader const* setUniform(std::string name, glm::mat4 v1) const;
 };
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid
 

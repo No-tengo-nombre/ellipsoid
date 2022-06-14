@@ -5,6 +5,7 @@
 
 namespace ellipsoid {
 namespace gl {
+namespace core {
 
 class TransformComponent {
 protected:
@@ -118,6 +119,7 @@ public:
     Transform& operator-=(const Transform& rhs);
 };
 
+} // namespace core
 } // namespace gl
 } // namespace ellipsoid
 
