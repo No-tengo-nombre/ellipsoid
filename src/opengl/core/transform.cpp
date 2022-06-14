@@ -225,10 +225,12 @@ Transform* Transform::translate(const float x, const float y, const float z) {
 
 Transform* Transform::rotate(const float x, const float y, const float z) {
     _rotation += TransformRotate(x, y, z);
+    return this;
 }
 
 Transform* Transform::scale(const float x, const float y, const float z) {
     _scaling += TransformScale(x, y, z);
+    return this;
 }
 
 glm::mat4 Transform::getTransformMatrix() const {
