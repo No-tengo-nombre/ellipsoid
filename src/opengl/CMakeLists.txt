@@ -2,6 +2,8 @@ set(PROJECT_OPENGL_NAME "${PROJECT_NAME}OpenGL")
 
 file(GLOB GL_ROOT_SOURCE *.cpp)
 file(GLOB GL_ROOT_HEADER *.hpp)
+file(GLOB GL_CORE_SOURCE core/*.cpp)
+file(GLOB GL_CORE_HEADER core/*.hpp)
 file(GLOB GL_BUFFERS_SOURCE buffers/*.cpp)
 file(GLOB GL_BUFFERS_HEADER buffers/*.hpp)
 
@@ -11,6 +13,8 @@ add_library(GLAD SHARED "${PROJECT_SOURCE_DIR}/dependencies/GLAD/src/glad.c")
 add_library(${PROJECT_OPENGL_NAME} SHARED
     ${GL_ROOT_SOURCE}
     ${GL_ROOT_HEADER}
+    ${GL_CORE_SOURCE}
+    ${GL_CORE_HEADER}
     ${GL_BUFFERS_SOURCE}
     ${GL_BUFFERS_HEADER}
 )
