@@ -1,8 +1,8 @@
 #ifndef ELLIPSOID_GL_WINDOW_HEADER
 #define ELLIPSOID_GL_WINDOW_HEADER
 
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
 #include <string>
 
 namespace ellipsoid {
@@ -27,7 +27,7 @@ private:
     bool _depthTest = true;
 
     bool init() const;
-    bool terminate() const;
+    void terminate() const;
 
 public:
     Window();
