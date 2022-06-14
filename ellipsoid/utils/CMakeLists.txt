@@ -1,0 +1,13 @@
+set(PROJECT_UTILS_NAME "${PROJECT_NAME}Utils")
+
+file(GLOB UTILS_ROOT_SOURCE *.cpp)
+file(GLOB UTILS_ROOT_HEADER *.hpp)
+
+add_library(${PROJECT_UTILS_NAME} SHARED
+    ${UTILS_ROOT_SOURCE}
+    ${UTILS_ROOT_HEADER}
+)
+
+target_include_directories(${PROJECT_UTILS_NAME} PUBLIC
+    ${PROJECT_DEPENDENCIES_DIR}/STB/include
+)
