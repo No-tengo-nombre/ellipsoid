@@ -7,9 +7,6 @@ file(GLOB GL_CORE_HEADER core/*.hpp)
 file(GLOB GL_BUFFERS_SOURCE buffers/*.cpp)
 file(GLOB GL_BUFFERS_HEADER buffers/*.hpp)
 
-# Build the GLAD library
-add_library(GLAD SHARED "${PROJECT_SOURCE_DIR}/dependencies/GLAD/src/glad.c")
-
 add_library(${PROJECT_OPENGL_NAME} SHARED
     ${GL_ROOT_SOURCE}
     ${GL_ROOT_HEADER}
@@ -20,8 +17,8 @@ add_library(${PROJECT_OPENGL_NAME} SHARED
 )
 
 target_link_libraries(${PROJECT_OPENGL_NAME} PUBLIC
-    GLAD
-    "${PROJECT_DEPENDENCIES_DIR}/GLFW/lib/libglfw3.a"
+    GLAD_GL
+    "${PROJECT_DEPENDENCIES_DIR}/GLFW/build/src/libglfw3.a"
 )
 
 target_include_directories(${PROJECT_OPENGL_NAME} PUBLIC
