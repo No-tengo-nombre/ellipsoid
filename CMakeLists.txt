@@ -14,6 +14,6 @@ target_include_directories(GLAD_GL PRIVATE
     "${PROJECT_DEPENDENCIES_DIR}/GLAD/include"
 )
 
-add_subdirectory(src)
+add_subdirectory(ellipsoid)
 add_subdirectory(examples)
 add_subdirectory(test)
