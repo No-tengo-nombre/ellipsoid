@@ -1,5 +1,3 @@
-set(PROJECT_UTILS_NAME "${PROJECT_NAME}Utils")
-
 file(GLOB UTILS_ROOT_SOURCE *.cpp)
 file(GLOB UTILS_ROOT_HEADER *.hpp)
 

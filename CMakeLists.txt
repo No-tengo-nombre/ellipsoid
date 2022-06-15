@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 project(Ellipsoid VERSION 0.1)
 set(CMAKE_DEPENDENCIES_DIR "${CMAKE_SOURCE_DIR}/dependencies")
 
+# Names for the different libraries in the project
+set(PROJECT_UTILS_NAME "${PROJECT_NAME}Utils")
+set(PROJECT_OPENGL_NAME "${PROJECT_NAME}OpenGL")
+set(PROJECT_VULKAN_NAME "${PROJECT_NAME}Vulkan")
+
 option(ELLIPSOID_BUILD_EXAMPLES "Build the examples that come with the package." OFF)
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
 

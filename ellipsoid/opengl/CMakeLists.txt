@@ -1,5 +1,3 @@
-set(PROJECT_OPENGL_NAME "${PROJECT_NAME}OpenGL")
-
 file(GLOB GL_ROOT_SOURCE *.cpp)
 file(GLOB GL_ROOT_HEADER *.hpp)
 file(GLOB GL_CORE_SOURCE core/*.cpp)

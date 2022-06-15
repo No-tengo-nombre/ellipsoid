@@ -1,5 +1,3 @@
-# set(PROJECT_VULKAN_NAME "${PROJECT_NAME}Vulkan")
-
 # file(GLOB VULKAN_ROOT_SOURCE *.cpp)
 # file(GLOB VULKAN_ROOT_HEADER *.hpp)
 
