@@ -22,7 +22,7 @@ public:
     Renderer3D();
 
     ColorRGBA getClearColor() const { return _clearColor; };
-    Renderer3D* setClearColor(ColorRGBA color);
+    Renderer3D* clearColor(ColorRGBA color);
 
     Renderer3D* add(const Shape item);
     void render() const;

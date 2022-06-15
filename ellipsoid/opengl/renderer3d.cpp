@@ -5,7 +5,7 @@ namespace gl {
 
 Renderer3D::Renderer3D() { _clearColor = ColorRGBA(0, 0, 0); }
 
-Renderer3D* Renderer3D::setClearColor(ColorRGBA color) {
+Renderer3D* Renderer3D::clearColor(ColorRGBA color) {
     _clearColor = color;
     glClearColor(color[0], color[1], color[2], color[3]);
     return this;
