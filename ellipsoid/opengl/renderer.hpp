@@ -22,14 +22,12 @@ public:
     Renderer3D();
 
     ColorRGBA getClearColor() const { return _clearColor; };
-    Renderer3D* setClearColor(const ColorRGBA color);
+    Renderer3D* setClearColor(ColorRGBA color);
 
-    void render() const;
     Renderer3D* add(const Shape item);
-    Renderer3D* add(const Shape item, const GLenum drawMode);
+    void render() const;
     void draw(const Shape item) const;
-    void draw(const Shape item, const GLenum drawMode) const;
-    Renderer3D polygonMode(const GLenum mode) const;
+    const Renderer3D* polygonMode(const GLenum face, const GLenum mode) const;
 
     Shape& operator[](size_t index) { return _items[index]; }
 
