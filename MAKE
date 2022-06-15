@@ -22,5 +22,5 @@ do
     esac
 done
 
-_="$(cmake -S . -B ./build/ -G "MinGW Makefiles" $PARAMS)"
+_="$(cmake -S . -B ./build/ -G 'MinGW Makefiles' $PARAMS)"
 cmake --build ./build/
