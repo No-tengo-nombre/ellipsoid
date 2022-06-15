@@ -23,6 +23,8 @@ template <typename T> VAO* VAO::stride() {
     return this;
 }
 
+template VAO* VAO::stride<float>();
+
 VAO* VAO::size(unsigned int newSize) {
     _size = newSize;
     return this;
