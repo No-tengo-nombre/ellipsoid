@@ -26,7 +26,7 @@ void Renderer3D::render() const {
 void Renderer3D::draw(const Shape item) const { item.draw(); }
 
 const Renderer3D* Renderer3D::polygonMode(const GLenum face,
-                                    const GLenum mode) const {
+                                          const GLenum mode) const {
     glPolygonMode(face, mode);
     return this;
 }
