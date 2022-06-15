@@ -1,11 +1,6 @@
 #ifndef ELLIPSOID_UTILS_IMAGE_HEADER
 #define ELLIPSOID_UTILS_IMAGE_HEADER
 
-#ifndef STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#endif
-
-#include <stb_image.h>
 #include <string>
 
 namespace ellipsoid {
@@ -19,6 +14,7 @@ public:
     unsigned char* _data;
 
     Image(int width, int height, int channels, unsigned char* data);
+    ~Image();
 };
 
 Image loadImage(std::string path);

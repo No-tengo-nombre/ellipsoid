@@ -1,4 +1,7 @@
+#define STB_IMAGE_IMPLEMENTATION
+
 #include "image.hpp"
+#include <stb_image.h>
 
 namespace ellipsoid {
 namespace utils {
@@ -8,6 +11,10 @@ Image::Image(int width, int height, int channels, unsigned char* data) {
     _height = height;
     _channels = channels;
     _data = data;
+}
+
+Image::~Image() {
+    stbi_image_free(_data);
 }
 
 Image loadImage(std::string path) {
