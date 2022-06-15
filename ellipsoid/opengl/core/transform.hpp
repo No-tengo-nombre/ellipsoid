@@ -15,6 +15,7 @@ protected:
 
 public:
     TransformComponent();
+    TransformComponent(const glm::vec3 vector);
     TransformComponent(const float x, const float y, const float z);
 
     float getX() const { return _x; }
@@ -25,6 +26,8 @@ public:
     TransformComponent* setY(const float newY);
     TransformComponent* setZ(const float newZ);
 
+    glm::vec3 asVector() const;
+
     virtual glm::mat4 getTransformMatrix() const = 0;
 };
 
@@ -32,6 +35,7 @@ public:
 class TransformTranslate : public TransformComponent {
 public:
     TransformTranslate() : TransformComponent() {}
+    TransformTranslate(const glm::vec3 vector) : TransformComponent(vector) {}
     TransformTranslate(const float x, const float y, const float z)
         : TransformComponent(x, y, z) {}
 
@@ -47,6 +51,7 @@ public:
 class TransformRotate : public TransformComponent {
 public:
     TransformRotate() : TransformComponent() {}
+    TransformRotate(const glm::vec3 vector) : TransformComponent(vector) {}
     TransformRotate(const float x, const float y, const float z)
         : TransformComponent(x, y, z) {}
 
@@ -66,6 +71,7 @@ public:
 class TransformScale : public TransformComponent {
 public:
     TransformScale() : TransformComponent() {}
+    TransformScale(const glm::vec3 vector) : TransformComponent(vector) {}
     TransformScale(const float x, const float y, const float z)
         : TransformComponent(x, y, z) {}
 
@@ -95,6 +101,9 @@ public:
     Transform* setRotation(const TransformRotate* rot);
     Transform* setScaling(const TransformScale* scale);
 
+    Transform* translate(const glm::vec3 vector);
+    Transform* rotate(const glm::vec3 vector);
+    Transform* scale(const glm::vec3 vector);
     Transform* translate(const float x, const float y, const float z);
     Transform* rotate(const float x, const float y, const float z);
     Transform* scale(const float x, const float y, const float z);

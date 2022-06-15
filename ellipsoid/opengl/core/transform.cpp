@@ -20,6 +20,12 @@ TransformComponent::TransformComponent() {
     _z = 0;
 }
 
+TransformComponent::TransformComponent(const glm::vec3 vector) {
+    _x = vector[0];
+    _y = vector[1];
+    _z = vector[2];
+}
+
 TransformComponent::TransformComponent(const float x, const float y,
                                        const float z) {
     _x = x;
@@ -40,6 +46,10 @@ TransformComponent* TransformComponent::setY(const float newY) {
 TransformComponent* TransformComponent::setZ(const float newZ) {
     _z = newZ;
     return this;
+}
+
+glm::vec3 TransformComponent::asVector() const {
+    return glm::vec3(getX(), getY(), getZ());
 }
 
 //|=========================| TransformTranslate |==========================|//
@@ -212,11 +222,21 @@ Transform* Transform::setScaling(const TransformScale* scale) {
     return this;
 }
 
-// (&_translation)
-//     ->setX(_translation.getX() + x)
-//     ->setY(_translation.getY() + y)
-//     ->setZ(_translation.getZ() + z);
-// return this;
+Transform* Transform::translate(const glm::vec3 vector) {
+    _translation += TransformTranslate(vector);
+    return this;
+}
+
+Transform* Transform::rotate(const glm::vec3 vector) {
+    _rotation += TransformRotate(vector);
+    return this;
+}
+
+Transform* Transform::scale(const glm::vec3 vector) {
+    _scaling += TransformScale(vector);
+    return this;
+}
+
 
 Transform* Transform::translate(const float x, const float y, const float z) {
     _translation += TransformTranslate(x, y, z);
