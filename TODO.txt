@@ -1,0 +1,7 @@
+=== TODO List ===
+ +  Implement batch rendering.
+ +  Turn the headers in OpenGL into API-agnostic headers. This would
+    make it so that there is only one set of header files, and you
+    import the library corresponding to the API you want to use.
+     +  Abstract away the classes that come with OpenGL.
+ +  Add Vulkan support.
