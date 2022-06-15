@@ -13,8 +13,13 @@ public:
     int _channels;
     unsigned char* _data;
 
-    Image(int width, int height, int channels, unsigned char* data);
+    Image();
+    Image(const int width, const int height, const int channels,
+          unsigned char* data);
     ~Image();
+
+    void load(const int width, const int height, const int channels,
+              unsigned char* data);
 };
 
 Image loadImage(const std::string path);
