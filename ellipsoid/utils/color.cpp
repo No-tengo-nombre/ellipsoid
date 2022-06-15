@@ -44,6 +44,10 @@ void ColorRGBA::b(unsigned int val) { _b = limitValue(val); }
 
 void ColorRGBA::a(unsigned int val) { _a = limitValue(val); }
 
+std::vector<unsigned int> ColorRGBA::asVector() const {
+    return std::vector<unsigned int>({_r, _g, _b, _a});
+}
+
 const ColorRGBA ColorRGBA::operator+(const ColorRGBA& rhs) {
     ColorRGBA result;
     result.r(getR() + rhs.getR());
@@ -76,6 +80,10 @@ ColorRGBA& ColorRGBA::operator-=(const ColorRGBA& rhs) {
     b(_b - rhs.getB());
     a(_a - rhs.getA());
     return *this;
+}
+
+unsigned int& ColorRGBA::operator[](size_t index) {
+    return asVector()[index];
 }
 
 } // namespace utils

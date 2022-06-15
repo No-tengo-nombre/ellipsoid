@@ -4,6 +4,8 @@
 #define ELLIPSOID_COLOR_MIN 0
 #define ELLIPSOID_COLOR_MAX 255
 
+#include <vector>
+
 namespace ellipsoid {
 namespace utils {
 
@@ -32,10 +34,14 @@ public:
     unsigned int getB() const { return _b; };
     unsigned int getA() const { return _a; };
 
+    std::vector<unsigned int> asVector() const;
+
     const ColorRGBA operator+(const ColorRGBA& rhs);
     const ColorRGBA operator-(const ColorRGBA& rhs);
     ColorRGBA& operator+=(const ColorRGBA& rhs);
     ColorRGBA& operator-=(const ColorRGBA& rhs);
+
+    unsigned int& operator[](size_t index);
 };
 
 } // namespace utils
