@@ -44,7 +44,7 @@ public:
     void update();
     void updateUBO(const unsigned int index);
 
-    virtual glm::mat4 getProjectionMatrix() const;
+    virtual glm::mat4 getProjectionMatrix() const = 0;
 };
 
 class OrthographicCamera : public Camera {
