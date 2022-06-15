@@ -9,5 +9,9 @@ add_library(${PROJECT_UTILS_NAME} SHARED
 )
 
 target_include_directories(${PROJECT_UTILS_NAME} PUBLIC
-    ${PROJECT_DEPENDENCIES_DIR}/STB/include
+    ${PROJECT_BINARY_DIR}
+    ${PROJECT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_DEPENDENCIES_DIR}/STB/include
 )
+
