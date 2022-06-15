@@ -17,7 +17,7 @@ public:
     ~Image();
 };
 
-Image loadImage(std::string path);
+Image loadImage(const std::string path);
 
 } // namespace utils
 } // namespace ellipsoid

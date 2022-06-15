@@ -17,7 +17,7 @@ Image::~Image() {
     stbi_image_free(_data);
 }
 
-Image loadImage(std::string path) {
+Image loadImage(const std::string path) {
     int width;
     int height;
     int channels;
