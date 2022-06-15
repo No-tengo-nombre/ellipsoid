@@ -2,15 +2,16 @@
 #define ELLIPSOID_GL_SHAPE_HEADER
 
 #include "buffers/buffers.hpp"
-#include "material.hpp"
 #include "core/texture.hpp"
+#include "material.hpp"
 #include <glad/gl.h>
 #include <vector>
 
 namespace ellipsoid {
 namespace gl {
 
-using namespace buffers;
+using namespace ellipsoid::gl::buffers;
+using namespace ellipsoid::gl::core;
 
 class Shape {
 private:
