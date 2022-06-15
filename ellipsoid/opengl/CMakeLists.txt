@@ -19,7 +19,7 @@ add_library(${PROJECT_OPENGL_NAME} SHARED
 target_link_libraries(${PROJECT_OPENGL_NAME} PUBLIC
     GLAD_GL
     ${PROJECT_UTILS_NAME}
-    ${PROJECT_DEPENDENCIES_DIR}/GLFW/build/src/libglfw3.a
+    ${CMAKE_DEPENDENCIES_DIR}/GLFW/build/src/libglfw3.a
 )
 
 target_include_directories(${PROJECT_OPENGL_NAME} PUBLIC
