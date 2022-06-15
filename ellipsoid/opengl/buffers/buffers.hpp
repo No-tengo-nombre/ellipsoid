@@ -2,6 +2,7 @@
 #define ELLIPSOID_GL_BUFFERS_BUFFERS_HEADER
 
 #include <glad/gl.h>
+#include <glm/glm.hpp>
 #include <vector>
 
 namespace ellipsoid {
@@ -94,13 +95,14 @@ public:
 
     unsigned int getId() { return _id; };
 
-    UBO* size(unsigned int newSize);
-    UBO* usage(GLenum newUsage);
+    UBO* size(const unsigned int newSize);
+    UBO* usage(const GLenum newUsage);
     UBO* build();
 
-    void bindIndex(unsigned int index);
+    void bindIndex(const unsigned int index);
     template <typename T>
-    void bufferData(unsigned int offset, std::vector<T> data);
+    void bufferData(const unsigned int offset, const std::vector<T> data);
+    void bufferData(const unsigned int offset, const glm::mat4 data);
 
     void bind() const;
     void unbind() const;

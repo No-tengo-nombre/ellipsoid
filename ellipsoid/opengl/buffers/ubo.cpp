@@ -12,12 +12,12 @@ UBO::UBO() {
 
 UBO::~UBO() { del(); }
 
-UBO* UBO::size(unsigned int newSize) {
+UBO* UBO::size(const unsigned int newSize) {
     _size = newSize;
     return this;
 }
 
-UBO* UBO::usage(GLenum newUsage) {
+UBO* UBO::usage(const GLenum newUsage) {
     _usage = newUsage;
     return this;
 }
@@ -32,11 +32,26 @@ UBO* UBO::build() {
     return this;
 }
 
+void UBO::bindIndex(const unsigned int index) {
+    glBindBufferBase(GL_UNIFORM_BUFFER, index, _id);
+}
+
 template <typename T>
-void UBO::bufferData(unsigned int offset, std::vector<T> data) {
+void UBO::bufferData(const unsigned int offset, const std::vector<T> data) {
     bind();
     glBufferSubData(GL_UNIFORM_BUFFER, offset, sizeof(T) * data.size(), &data);
     unbind();
+}
+
+template void UBO::bufferData<float>(const unsigned int offset,
+                                     const std::vector<float> data);
+template void
+UBO::bufferData<unsigned int>(const unsigned int offset,
+                              const std::vector<unsigned int> data);
+
+void UBO::bufferData(const unsigned int offset, const glm::mat4 data) {
+    bind();
+    glBufferSubData(GL_UNIFORM_BUFFER, offset, sizeof(glm::mat4), &data);
 }
 
 void UBO::bind() const { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _id); }
