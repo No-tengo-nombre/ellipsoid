@@ -5,18 +5,20 @@ namespace ellipsoid {
 namespace gl {
 namespace core {
 
+using namespace ellipsoid::utils;
+
 Texture2D::Texture2D() { _id = 0; }
 
 Texture2D::Texture2D(const std::string path) {
-    utils::Image result = utils::loadImage(path);
+    Image result = loadImage(path);
     _id = 0;
-    _image = new utils::Image;
+    _image = new Image;
     _image->load(result._width, result._height, result._channels, result._data);
 }
 
 Texture2D* Texture2D::loadFromPath(const std::string path) {
-    utils::Image result = utils::loadImage(path);
-    _image = new utils::Image;
+    Image result = loadImage(path);
+    _image = new Image;
     _image->load(result._width, result._height, result._channels, result._data);
     return this;
 }
