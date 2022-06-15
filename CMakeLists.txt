@@ -10,20 +10,20 @@ set(PROJECT_UTILS_NAME "${PROJECT_NAME}Utils")
 set(PROJECT_OPENGL_NAME "${PROJECT_NAME}OpenGL")
 set(PROJECT_VULKAN_NAME "${PROJECT_NAME}Vulkan")
 
-option(ELLIPSOID_BUILD_EXAMPLES "Build the examples that come with the package." OFF)
+option(ELLIPSOID_BUILD_EXAMPLES
+       "Build the examples that come with the package." OFF)
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
 
 # Build the GLAD library
 add_library(GLAD_GL SHARED ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
-target_include_directories(GLAD_GL PRIVATE
-    ${CMAKE_DEPENDENCIES_DIR}/GLAD/include
-)
+target_include_directories(GLAD_GL
+                           PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
 
 add_subdirectory(ellipsoid)
 
-if (ELLIPSOID_BUILD_EXAMPLES)
-    add_subdirectory(examples)
+if(ELLIPSOID_BUILD_EXAMPLES)
+  add_subdirectory(examples)
 endif()
-if (ELLIPSOID_BUILD_TESTS)
-    add_subdirectory(test)
+if(ELLIPSOID_BUILD_TESTS)
+  add_subdirectory(test)
 endif()

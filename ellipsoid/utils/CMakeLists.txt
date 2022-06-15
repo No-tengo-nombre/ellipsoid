@@ -1,15 +1,10 @@
 file(GLOB UTILS_ROOT_SOURCE *.cpp)
 file(GLOB UTILS_ROOT_HEADER *.hpp)
 
-add_library(${PROJECT_UTILS_NAME} SHARED
-    ${UTILS_ROOT_SOURCE}
-    ${UTILS_ROOT_HEADER}
-)
+add_library(${PROJECT_UTILS_NAME} SHARED ${UTILS_ROOT_SOURCE}
+                                         ${UTILS_ROOT_HEADER})
 
-target_include_directories(${PROJECT_UTILS_NAME} PUBLIC
-    ${PROJECT_BINARY_DIR}
-    ${PROJECT_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_DEPENDENCIES_DIR}/STB/include
-)
-
+target_include_directories(
+  ${PROJECT_UTILS_NAME}
+  PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR} ${CMAKE_SOURCE_DIR}
+         ${CMAKE_DEPENDENCIES_DIR}/STB/include)
