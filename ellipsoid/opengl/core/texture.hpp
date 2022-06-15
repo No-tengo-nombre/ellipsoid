@@ -21,7 +21,6 @@ private:
 public:
     Texture2D();
     Texture2D(const std::string path);
-    ~Texture2D();
 
     Texture2D* loadFromPath(const std::string path);
     Texture2D* build();
