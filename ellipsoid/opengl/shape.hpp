@@ -12,6 +12,11 @@ class Shape {
 private:
     VAO _vao;
     EBO _ebo;
+    GLenum _drawMode;
+
+public:
+    GLenum getDrawMode() const { return _drawMode; };
+    void draw() const;
 };
 
 } // namespace gl
