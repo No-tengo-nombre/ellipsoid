@@ -10,6 +10,19 @@ namespace ellipsoid {
 namespace gl {
 namespace core {
 
+void Shader::verifyProgram(const std::string message) const {
+    int success = 0;
+    glGetProgramiv(_id, GL_LINK_STATUS, &success);
+    if (success == 0) {
+        char log[ELLIPSOID_GL_SHADER_LOG_LEN];
+        int logLen = 0;
+        glGetProgramInfoLog(_id, ELLIPSOID_GL_SHADER_LOG_LEN, &logLen, log);
+
+        std::string out_msg = log;
+        throw std::runtime_error(message + "\n" + out_msg);
+    }
+}
+
 void Shader::verifyShader(unsigned int shader, std::string message) {
     Shader::verifyShader(shader, message, GL_COMPILE_STATUS);
 }
@@ -54,13 +67,15 @@ Shader* Shader::vertex(std::string path) {
         throw;
     }
 
+    std::cout << code << std::endl;
+
     unsigned int shader = Shader::makeVertexShader(code);
     Shader::verifyVertexShader(shader);
 
     glAttachShader(_id, shader);
     glLinkProgram(_id);
 
-    Shader::verifyShader(_id, "VERTEX link error", GL_LINK_STATUS);
+    Shader::verifyProgram("VERTEX Link status");
     glDeleteShader(_id);
     return this;
 }
@@ -85,7 +100,7 @@ Shader* Shader::fragment(std::string path) {
     glAttachShader(_id, shader);
     glLinkProgram(_id);
 
-    Shader::verifyShader(_id, "FRAGMENT link error", GL_LINK_STATUS);
+    Shader::verifyProgram("FRAGMENT Link status");
     glDeleteShader(_id);
     return this;
 }

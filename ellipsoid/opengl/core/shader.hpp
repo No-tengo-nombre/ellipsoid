@@ -16,6 +16,7 @@ class Shader {
 private:
     unsigned int _id;
 
+    void verifyProgram(const std::string message) const;
     static void verifyShader(unsigned int shader, std::string message);
     static void verifyShader(unsigned int shader, std::string message,
                              GLenum status);
