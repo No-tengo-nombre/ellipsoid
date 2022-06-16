@@ -4,7 +4,9 @@ PROJECT_NAME="Ellipsoid"
 
 PARAMS=""
 
-while getopts "terd" arg
+EXAMPLE=""
+
+while getopts "terdR:" arg
 do
     case "$arg" in
         e)
@@ -19,8 +21,18 @@ do
         d)
             PARAMS+=" -DMAKE_BUILD_TYPE:STRING=Debug"
             ;;
+        R)
+            EXAMPLE="${OPTARG}"
+            ;;
     esac
 done
 
 _="$(cmake -S . -B ./build/ -G 'MinGW Makefiles' $PARAMS)"
 cmake --build ./build/
+
+if [[ "${EXAMPLE}" != "" ]]
+then
+    ./build/examples/${EXAMPLE}.exe
+    # _="$(./build/examples/${EXAMPLE}.exe)"
+fi
+
