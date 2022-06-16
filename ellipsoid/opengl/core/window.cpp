@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include <iostream>
 #include <stdexcept>
 
 namespace ellipsoid {
@@ -6,8 +7,8 @@ namespace gl {
 namespace core {
 
 bool Window::init() const {
-    bool glfw = glfwInit();
-    bool glad = gladLoadGL(glfwGetProcAddress);
+    int glfw = glfwInit();
+    int glad = gladLoadGL((GLADloadfunc)glfwGetProcAddress);
     return glfw && glad;
 }
 
@@ -84,8 +85,7 @@ Window* Window::depthTest(const bool condition) {
 }
 
 Window* Window::build() {
-    if (!(init()))
-        throw std::runtime_error("Failed to initialize the necessary modules.");
+    init();
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, _glVersionMajor);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, _glVersionMinor);
@@ -99,12 +99,28 @@ Window* Window::build() {
         throw std::runtime_error("Failed to create window.");
     }
 
-    if (_depthTest)
-        glEnable(GL_DEPTH_TEST);
-
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(
         window, [](GLFWwindow* win, int w, int h) { glViewport(0, 0, w, h); });
+
+    /*
+    We have to call init twice because I'm an idiot :)
+    My init function initializes both GLFW and GLAD at the same time, but to initialize
+    GLAD you need to have a context in the running thread, which means you have to
+    initialize GLFW before GLAD. I could separate init into 2 separate functions, but
+    then the software would depend on the rendering API that is being used (something
+    which I don't want to happen, as I want this piece of software to be API agnostic).
+
+    TODO: Think of a better way of doing this thing.
+    */
+
+    if (!init()) {
+        throw std::runtime_error("Failed to initialize the necessary modules.");
+    }
+
+    if (_depthTest)
+        glEnable(GL_DEPTH_TEST);
+
     _glfwWindow = window;
     return this;
 }
