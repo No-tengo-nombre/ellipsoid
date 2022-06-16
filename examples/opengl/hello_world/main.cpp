@@ -20,8 +20,8 @@ int main() {
 
     // Defining a shader
     Shader* shader = Shader()
-        .vertex("resources/shader/hello_world.vert")
-        ->fragment("resources/shader/hello_world.frag");
+        .vertex("examples/opengl/hello_world/resources/shader/hello_world.vert")
+        ->fragment("examples/opengl/hello_world/resources/shader/hello_world.frag");
 
     // We make a material for the shape
     Material* material = Material().setShader(*shader);
