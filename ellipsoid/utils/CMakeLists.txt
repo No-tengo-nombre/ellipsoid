@@ -1,7 +1,7 @@
 file(GLOB UTILS_ROOT_SOURCE *.cpp)
 file(GLOB UTILS_ROOT_HEADER *.hpp)
 
-add_library(${PROJECT_UTILS_NAME} SHARED ${UTILS_ROOT_SOURCE}
+add_library(${PROJECT_UTILS_NAME} STATIC ${UTILS_ROOT_SOURCE}
                                          ${UTILS_ROOT_HEADER})
 
 target_include_directories(

@@ -15,7 +15,7 @@ option(ELLIPSOID_BUILD_EXAMPLES
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
 
 # Build the GLAD library
-add_library(GLAD_GL SHARED ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
+add_library(GLAD_GL STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
 target_include_directories(GLAD_GL
                            PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
 
