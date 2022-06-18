@@ -13,3 +13,7 @@ target_include_directories(
          ${CMAKE_DEPENDENCIES_DIR}/GLFW/include
          ${CMAKE_DEPENDENCIES_DIR}/GLM/include
          ${CMAKE_DEPENDENCIES_DIR}/STB/include)
+
+set_target_properties(
+  ${EXAMPLE_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY
+                             ${CMAKE_BINARY_DIR}/examples/opengl)

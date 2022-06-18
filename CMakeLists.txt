@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 project(Ellipsoid VERSION 0.1)
 set(CMAKE_DEPENDENCIES_DIR ${CMAKE_SOURCE_DIR}/dependencies)
 
+# Output for files
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
 # Names for the different libraries in the project
 set(PROJECT_UTILS_NAME ${PROJECT_NAME}Utils)
 set(PROJECT_OPENGL_NAME ${PROJECT_NAME}OpenGL)
