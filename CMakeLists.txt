@@ -8,15 +8,18 @@ set(CMAKE_DEPENDENCIES_DIR ${CMAKE_SOURCE_DIR}/dependencies)
 # Output for files
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_INCLUDES_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/include)
 
 # Names for the different libraries in the project
 set(PROJECT_UTILS_NAME ${PROJECT_NAME}Utils)
 set(PROJECT_OPENGL_NAME ${PROJECT_NAME}OpenGL)
 set(PROJECT_VULKAN_NAME ${PROJECT_NAME}Vulkan)
 
+option(ELLIPSOID_BUILD_SHARED_LIBS "Build shared libraries." ON)
 option(ELLIPSOID_BUILD_EXAMPLES
        "Build the examples that come with the package." OFF)
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
+option(ELLIPSOID_INSTALL "Install target." ON)
 
 # Build the GLAD library
 add_library(GLAD_GL STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
@@ -30,4 +33,13 @@ if(ELLIPSOID_BUILD_EXAMPLES)
 endif()
 if(ELLIPSOID_BUILD_TESTS)
   add_subdirectory(test)
+endif()
+
+if(ELLIPSOID_INSTALL)
+  install(
+    DIRECTORY ${CMAKE_BINARY_DIR}/include/ellipsoid
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIRS}
+    FILES_MATCHING
+    PATTERN **.hpp
+    PATTERN **.h)
 endif()
