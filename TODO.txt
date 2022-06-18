@@ -1,6 +1,4 @@
 === TODO List ===
- +  Implement cameras.
- +  Implement transforms in shapes.
  +  Implement batch rendering.
  +  Turn the headers in OpenGL into API-agnostic headers. This would
     make it so that there is only one set of header files, and you
