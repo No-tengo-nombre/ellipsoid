@@ -12,11 +12,13 @@ namespace core {
 
 void Shader::verifyProgram(const std::string message) const {
     int success = 0;
+    std::cout << success << std::endl;
     glGetProgramiv(_id, GL_LINK_STATUS, &success);
-    if (success == 0) {
+    std::cout << success << std::endl;
+    if (!success) {
         char log[ELLIPSOID_GL_SHADER_LOG_LEN];
         int logLen = 0;
-        glGetProgramInfoLog(_id, ELLIPSOID_GL_SHADER_LOG_LEN, &logLen, log);
+        glGetProgramInfoLog(_id, ELLIPSOID_GL_SHADER_LOG_LEN, NULL, log);
 
         std::string out_msg = log;
         throw std::runtime_error(message + "\n" + out_msg);
@@ -31,10 +33,10 @@ void Shader::verifyShader(unsigned int shader, std::string message,
                           GLenum status) {
     int success = 0;
     glGetShaderiv(shader, status, &success);
-    if (success == 0) {
+    if (!success) {
         char log[ELLIPSOID_GL_SHADER_LOG_LEN];
         int logLen = 0;
-        glGetShaderInfoLog(shader, ELLIPSOID_GL_SHADER_LOG_LEN, &logLen, log);
+        glGetShaderInfoLog(shader, ELLIPSOID_GL_SHADER_LOG_LEN, NULL, log);
 
         std::string out_msg = log;
         throw std::runtime_error(message + "\n" + out_msg);
@@ -67,8 +69,6 @@ Shader* Shader::vertex(std::string path) {
         throw;
     }
 
-    std::cout << code << std::endl;
-
     unsigned int shader = Shader::makeVertexShader(code);
     Shader::verifyVertexShader(shader);
 
@@ -76,7 +76,7 @@ Shader* Shader::vertex(std::string path) {
     glLinkProgram(_id);
 
     Shader::verifyProgram("VERTEX Link status");
-    glDeleteShader(_id);
+    glDeleteShader(shader);
     return this;
 }
 
@@ -101,7 +101,7 @@ Shader* Shader::fragment(std::string path) {
     glLinkProgram(_id);
 
     Shader::verifyProgram("FRAGMENT Link status");
-    glDeleteShader(_id);
+    glDeleteShader(shader);
     return this;
 }
 
