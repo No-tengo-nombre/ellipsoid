@@ -62,6 +62,7 @@ Shape* Shape::drawMode(const GLenum newDrawMode) {
 
 Shape* Shape::build() {
     VAO* vao = VAO().stride<float>()->sizes(_vertSizes)->build();
+    vao->bind();
     VBO* vbo = VBO().vertices(_vertices)->usage(_usage)->build();
     EBO* ebo = EBO().indices(_indices)->count(_count)->usage(_usage)->build();
 
