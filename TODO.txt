@@ -11,3 +11,4 @@
   + Make the whole program more configurable (right now it assumes a lot of
     configurations, and doesn't allow the user to easily change them without
     interacting with the rendering API).
+  + Implement functionality for user IO.
