@@ -6,23 +6,26 @@ PARAMS=""
 
 EXAMPLE=""
 
-while getopts "terdR:" arg
+while getopts "r:ETRD" arg
 do
     case "$arg" in
-        e)
+        r)
+            EXAMPLE="${OPTARG}"
+            ;;
+        S)
+            PARAMS+=" -DELLIPSOID_BUILD_SHARED_LIBS=ON"
+            ;;
+        E)
             PARAMS+=" -DELLIPSOID_BUILD_EXAMPLES=ON"
             ;;
-        t)
+        T)
             PARAMS+=" -DELLIPSOID_BUILD_TESTS=ON"
             ;;
-        r)
+        R)
             PARAMS+=" -DMAKE_BUILD_TYPE:STRING=Release"
             ;;
-        d)
+        D)
             PARAMS+=" -DMAKE_BUILD_TYPE:STRING=Debug"
-            ;;
-        R)
-            EXAMPLE="${OPTARG}"
             ;;
     esac
 done
