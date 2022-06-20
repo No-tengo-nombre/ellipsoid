@@ -12,9 +12,7 @@ namespace core {
 
 void Shader::verifyProgram(const std::string message) const {
     int success = 0;
-    std::cout << success << std::endl;
     glGetProgramiv(_id, GL_LINK_STATUS, &success);
-    std::cout << success << std::endl;
     if (!success) {
         char log[ELLIPSOID_GL_SHADER_LOG_LEN];
         int logLen = 0;
@@ -51,7 +49,7 @@ unsigned int Shader::makeShader(std::string content, GLenum shader_type) {
     return shader;
 }
 
-Shader::Shader() { _id = 0; }
+Shader::Shader() { _id = glCreateProgram(); }
 
 Shader::~Shader() { del(); }
 
