@@ -33,6 +33,5 @@ cmake --build ./build/
 if [[ "${EXAMPLE}" != "" ]]
 then
     ./build/examples/${EXAMPLE}.exe
-    # _="$(./build/examples/${EXAMPLE}.exe)"
 fi
 
