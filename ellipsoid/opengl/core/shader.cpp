@@ -54,6 +54,7 @@ Shader::Shader() { _id = glCreateProgram(); }
 Shader::~Shader() { del(); }
 
 Shader* Shader::vertex(std::string path) {
+    // Read the data in the file
     std::ifstream file;
     std::stringstream stream;
     std::string code;
@@ -67,6 +68,7 @@ Shader* Shader::vertex(std::string path) {
         throw;
     }
 
+    // Make and verify the shader
     unsigned int shader = Shader::makeVertexShader(code);
     Shader::verifyVertexShader(shader);
 
@@ -79,6 +81,7 @@ Shader* Shader::vertex(std::string path) {
 }
 
 Shader* Shader::fragment(std::string path) {
+    // Read the data in the file
     std::ifstream file;
     std::stringstream stream;
     std::string code;
@@ -92,6 +95,7 @@ Shader* Shader::fragment(std::string path) {
         throw;
     }
 
+    // Make and verify the shader
     unsigned int shader = Shader::makeFragmentShader(code);
     Shader::verifyFragmentShader(shader);
 
