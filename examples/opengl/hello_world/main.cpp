@@ -1,6 +1,7 @@
 #include <ellipsoid/opengl/ellipsoid.hpp>
 #include <ellipsoid/utils/color.hpp>
 #include <vector>
+#include <iostream>
 
 using namespace ellipsoid::gl;
 using namespace ellipsoid::gl::core;
@@ -16,7 +17,9 @@ int main() {
 
     // Make a 3D renderer for the scene
     Renderer3D* renderer =
-        Renderer3D().clearColor(ColorRGBA(0.2f, 0.2f, 0.2f, 1.0f));
+        Renderer3D().clearColor(ColorRGBAfloat(0.2f, 0.2f, 0.2f, 1.0f));
+
+    std::cout << renderer->getClearColor().getR() << std::endl;
 
     // Defining a shader
     Shader* shader = Shader()
