@@ -16,18 +16,20 @@ int main() {
         ->build();
 
     // Make a 3D renderer for the scene
-    Renderer3D* renderer =
-        Renderer3D().clearColor(ColorRGBAfloat(0.2f, 0.2f, 0.2f, 1.0f));
-
-    std::cout << renderer->getClearColor().getR() << std::endl;
+    Renderer3D* renderer = Renderer3D()
+        .clearColor(ColorRGBAfloat(1.0f, 1.0f, 1.0f, 1.0f))
+        ->build();
 
     // Defining a shader
     Shader* shader = Shader()
         .vertex("examples/opengl/hello_world/resources/shader/hello_world.vert")
-        ->fragment("examples/opengl/hello_world/resources/shader/hello_world.frag");
+        ->fragment("examples/opengl/hello_world/resources/shader/hello_world.frag")
+        ->build();
 
     // We make a material for the shape
-    Material* material = Material().setShader(*shader);
+    Material* material = Material()
+        .setShader(*shader)
+        ->build();
 
     // Defining the shape
     std::vector<float> triangleVertices({
@@ -54,4 +56,6 @@ int main() {
         renderer->render();
         window->swapBuffers();
     }
+
+    return 0;
 }
