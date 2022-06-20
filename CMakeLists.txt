@@ -15,7 +15,7 @@ set(PROJECT_UTILS_NAME ${PROJECT_NAME}Utils)
 set(PROJECT_OPENGL_NAME ${PROJECT_NAME}OpenGL)
 set(PROJECT_VULKAN_NAME ${PROJECT_NAME}Vulkan)
 
-option(ELLIPSOID_BUILD_SHARED_LIBS "Build shared libraries." ON)
+option(ELLIPSOID_BUILD_SHARED_LIBS "Build shared libraries." OFF)
 option(ELLIPSOID_BUILD_EXAMPLES
        "Build the examples that come with the package." OFF)
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
