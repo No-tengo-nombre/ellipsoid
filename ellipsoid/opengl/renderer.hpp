@@ -15,14 +15,15 @@ class Renderer2D {};
 
 class Renderer3D {
 private:
-    ColorRGBA _clearColor;
+    ColorRGBAfloat _clearColor;
     std::vector<Shape> _items;
 
 public:
     Renderer3D();
 
-    ColorRGBA getClearColor() const { return _clearColor; };
-    Renderer3D* clearColor(ColorRGBA color);
+    ColorRGBAfloat getClearColor() const { return _clearColor; };
+    Renderer3D* clearColor(ColorRGBA255 color);
+    Renderer3D* clearColor(ColorRGBAfloat color);
 
     Renderer3D* add(const Shape item);
     void render() const;

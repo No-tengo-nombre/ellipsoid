@@ -3,11 +3,17 @@
 namespace ellipsoid {
 namespace gl {
 
-Renderer3D::Renderer3D() { _clearColor = ColorRGBA(0, 0, 0); }
+Renderer3D::Renderer3D() { _clearColor = ColorRGBAfloat(0.0f, 0.0f, 0.0f); }
 
-Renderer3D* Renderer3D::clearColor(ColorRGBA color) {
+Renderer3D* Renderer3D::clearColor(ColorRGBAfloat color) {
     _clearColor = color;
     glClearColor(color[0], color[1], color[2], color[3]);
+    return this;
+}
+
+Renderer3D* Renderer3D::clearColor(ColorRGBA255 color) {
+    _clearColor = color.asRGBAfloat();
+    glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
     return this;
 }
 
