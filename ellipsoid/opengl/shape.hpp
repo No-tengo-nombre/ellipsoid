@@ -29,6 +29,7 @@ private:
 
 public:
     Shape();
+    ~Shape();
 
     GLenum getDrawMode() const { return _drawMode; };
 

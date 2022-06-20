@@ -1,4 +1,5 @@
 #include "shape.hpp"
+#include <iostream>
 
 namespace ellipsoid {
 namespace gl {
@@ -13,6 +14,10 @@ Shape::Shape() {
     _layouts = std::vector<unsigned int>();
     _vertSizes = std::vector<unsigned int>();
     _count = 0;
+}
+
+Shape::~Shape() {
+    del();
 }
 
 Shape* Shape::material(const Material material) {
@@ -64,6 +69,7 @@ Shape* Shape::build() {
     VAO* vao = VAO().stride<float>()->sizes(_vertSizes)->build();
     vao->bind();
     VBO* vbo = VBO().vertices(_vertices)->usage(_usage)->build();
+    vbo->bind();
     EBO* ebo = EBO().indices(_indices)->count(_count)->usage(_usage)->build();
 
     for (unsigned int l : _layouts) {
@@ -111,6 +117,7 @@ void Shape::del() const {
     _vao.del();
     _ebo.del();
     _material.del();
+    std::cout << "FASDF SD SF" << std::endl;
 }
 
 void Shape::draw() const {
@@ -119,7 +126,7 @@ void Shape::draw() const {
     bindEBO();
     bindTexture();
 
-    glDrawElements(_drawMode, _count, GL_UNSIGNED_INT, (void*)0);
+    glDrawElements(_drawMode, _count, GL_UNSIGNED_INT, 0);
 
     unbindVAO();
     unbindEBO();
