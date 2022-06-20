@@ -43,6 +43,7 @@ const Renderer3D* Renderer3D::polygonMode(const GLenum face,
 
 void Renderer3D::clear() const {
     glClear(GL_COLOR_BUFFER_BIT || GL_DEPTH_BUFFER_BIT);
+    // glClear(GL_COLOR_BUFFER_BIT);
 }
 
 } // namespace gl
