@@ -5,7 +5,6 @@
     import the library corresponding to the API you want to use.
       + Abstract away the classes that come with OpenGL.
   + Add Vulkan support.
-  + Fix the bugs in the shaders.
   + Figure out why the program is not working.
   + Fix the aforementioned issue.
   + Make the whole program more configurable (right now it assumes a lot of
