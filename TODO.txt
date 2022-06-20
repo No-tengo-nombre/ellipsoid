@@ -8,4 +8,6 @@
   + Fix the bugs in the shaders.
   + Figure out why the program is not working.
   + Fix the aforementioned issue.
- 
+  + Make the whole program more configurable (right now it assumes a lot of
+    configurations, and doesn't allow the user to easily change them without
+    interacting with the rendering API).
