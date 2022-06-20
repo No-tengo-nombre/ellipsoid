@@ -26,6 +26,10 @@ add_library(GLAD_GL STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
 target_include_directories(GLAD_GL
                            PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
 
+add_library(GLAD_VK STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/vulkan.c)
+target_include_directories(GLAD_GL
+                           PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
+
 add_subdirectory(ellipsoid)
 
 if(ELLIPSOID_BUILD_EXAMPLES)
