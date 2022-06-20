@@ -17,7 +17,7 @@ int main() {
 
     // Make a 3D renderer for the scene
     Renderer3D* renderer = Renderer3D()
-        .clearColor(ColorRGBAfloat(1.0f, 1.0f, 1.0f, 1.0f))
+        .clearColor(ColorRGBAfloat(0.5f, 0.5f, 0.5f, 1.0f))
         ->build();
 
     // Defining a shader
@@ -51,10 +51,10 @@ int main() {
     renderer->add(*triangle);
 
     while (!(window->shouldClose())) {
-        window->pollEvents();
         renderer->clear();
         renderer->render();
         window->swapBuffers();
+        window->pollEvents();
     }
 
     return 0;
