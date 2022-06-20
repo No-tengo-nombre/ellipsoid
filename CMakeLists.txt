@@ -25,21 +25,29 @@ option(ELLIPSOID_INSTALL "Install target." ON)
 add_library(GLAD_GL STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
 target_include_directories(GLAD_GL
                            PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
-
 add_library(GLAD_VK STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/vulkan.c)
-target_include_directories(GLAD_GL
+target_include_directories(GLAD_VK
                            PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
+
+if(${ELLIPSOID_BUILD_SHARED_LIBS})
+  add_library(GLAD_GL_DLL SHARED ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
+  target_include_directories(GLAD_GL_DLL
+                             PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
+  add_library(GLAD_VK_DLL SHARED ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/vulkan.c)
+  target_include_directories(GLAD_VK_DLL
+                             PRIVATE ${CMAKE_DEPENDENCIES_DIR}/GLAD/include)
+endif()
 
 add_subdirectory(ellipsoid)
 
-if(ELLIPSOID_BUILD_EXAMPLES)
+if(${ELLIPSOID_BUILD_EXAMPLES})
   add_subdirectory(examples)
 endif()
-if(ELLIPSOID_BUILD_TESTS)
+if(${ELLIPSOID_BUILD_TESTS})
   add_subdirectory(test)
 endif()
 
-if(ELLIPSOID_INSTALL)
+if(${ELLIPSOID_INSTALL})
   install(
     DIRECTORY ${CMAKE_BINARY_DIR}/include/ellipsoid
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIRS}
