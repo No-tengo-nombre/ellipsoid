@@ -47,6 +47,7 @@ public:
 
     Shader* vertex(std::string path);
     Shader* fragment(std::string path);
+    Shader* build();
 
     void use() const;
     void del() const;

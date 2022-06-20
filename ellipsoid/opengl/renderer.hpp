@@ -24,6 +24,7 @@ public:
     ColorRGBAfloat getClearColor() const { return _clearColor; };
     Renderer3D* clearColor(ColorRGBA255 color);
     Renderer3D* clearColor(ColorRGBAfloat color);
+    Renderer3D* build();
 
     Renderer3D* add(const Shape item);
     void render() const;

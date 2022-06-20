@@ -17,6 +17,10 @@ Renderer3D* Renderer3D::clearColor(ColorRGBA255 color) {
     return this;
 }
 
+Renderer3D* Renderer3D::build() {
+    return this;
+}
+
 Renderer3D* Renderer3D::add(const Shape item) {
     _items.push_back(item);
     return this;

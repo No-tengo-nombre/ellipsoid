@@ -15,6 +15,7 @@ public:
     ~Material();
 
     Material* setShader(const core::Shader shader);
+    Material* build();
 
     void use() const;
     void del() const;

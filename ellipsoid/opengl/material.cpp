@@ -16,6 +16,10 @@ Material* Material::setShader(const core::Shader shader) {
     return this;
 }
 
+Material* Material::build() {
+    return this;
+}
+
 void Material::use() const {
     _shader.use();
 }

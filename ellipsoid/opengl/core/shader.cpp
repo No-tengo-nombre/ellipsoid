@@ -103,6 +103,10 @@ Shader* Shader::fragment(std::string path) {
     return this;
 }
 
+Shader* Shader::build() {
+    return this;
+}
+
 void Shader::use() const { glUseProgram(_id); }
 
 void Shader::del() const { glDeleteShader(_id); }
