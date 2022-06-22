@@ -30,7 +30,7 @@ do
     esac
 done
 
-_="$(cmake -S . -B ./build/ -G 'MinGW Makefiles' $PARAMS)"
+cmake -S . -B ./build/ -G "MinGW Makefiles" $PARAMS
 cmake --build ./build/
 
 if [[ "${EXAMPLE}" != "" ]]
