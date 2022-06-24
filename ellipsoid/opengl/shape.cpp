@@ -81,33 +81,19 @@ Shape& Shape::build() {
     return *this;
 }
 
-void Shape::useMaterial() const {
-    _material.use();
-}
+void Shape::useMaterial() const { _material.use(); }
 
-void Shape::bindVAO() const {
-    _vao.bind();
-}
+void Shape::bindVAO() const { _vao.bind(); }
 
-void Shape::bindEBO() const {
-    _ebo.bind();
-}
+void Shape::bindEBO() const { _ebo.bind(); }
 
-void Shape::bindTexture() const {
-    _texture.bind();
-}
+void Shape::bindTexture() const { _texture.bind(); }
 
-void Shape::unbindVAO() const {
-    _vao.unbind();
-}
+void Shape::unbindVAO() const { _vao.unbind(); }
 
-void Shape::unbindEBO() const {
-    _ebo.unbind();
-}
+void Shape::unbindEBO() const { _ebo.unbind(); }
 
-void Shape::unbindTexture() const {
-    _texture.unbind();
-}
+void Shape::unbindTexture() const { _texture.unbind(); }
 
 void Shape::del() const {
     _vao.del();
