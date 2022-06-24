@@ -12,6 +12,9 @@ do
         r)
             EXAMPLE="${OPTARG}"
             ;;
+        I)
+            PARAMS+=" -DELLIPSOID_INSTALL=ON"
+            ;;
         S)
             PARAMS+=" -DELLIPSOID_BUILD_SHARED_LIBS=ON"
             ;;
