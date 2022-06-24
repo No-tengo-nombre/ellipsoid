@@ -19,7 +19,7 @@ option(ELLIPSOID_BUILD_SHARED_LIBS "Build shared libraries." OFF)
 option(ELLIPSOID_BUILD_EXAMPLES
        "Build the examples that come with the package." OFF)
 option(ELLIPSOID_BUILD_TESTS "Build the tests that come with the package." OFF)
-option(ELLIPSOID_INSTALL "Install target." ON)
+option(ELLIPSOID_INSTALL "Install target." OFF)
 
 # Build the GLAD library
 add_library(GLAD_GL STATIC ${CMAKE_DEPENDENCIES_DIR}/GLAD/src/gl.c)
