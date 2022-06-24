@@ -9,27 +9,27 @@ using namespace ellipsoid::utils;
 
 int main() {
     // We make the window using a builder pattern
-    Window* window = Window()
+    Window window = Window()
         .dimensions(1000, 1000)
-        ->title("Ellipsoid Example: Hello World")
-        ->windowed()
-        ->build();
+        .title("Ellipsoid Example: Hello World")
+        .windowed()
+        .build();
 
     // Make a 3D renderer for the scene
-    Renderer3D* renderer = Renderer3D()
+    Renderer3D renderer = Renderer3D()
         .clearColor(ColorRGBAfloat(0.5f, 0.5f, 0.5f, 1.0f))
-        ->build();
+        .build();
 
     // Defining a shader
-    Shader* shader = Shader()
+    Shader shader = Shader()
         .vertex("examples/opengl/hello_world/resources/shader/hello_world.vert")
-        ->fragment("examples/opengl/hello_world/resources/shader/hello_world.frag")
-        ->build();
+        .fragment("examples/opengl/hello_world/resources/shader/hello_world.frag")
+        .build();
 
     // We make a material for the shape
-    Material* material = Material()
-        .setShader(*shader)
-        ->build();
+    Material material = Material()
+        .setShader(shader)
+        .build();
 
     // Defining the shape
     std::vector<float> triangleVertices({
@@ -40,21 +40,21 @@ int main() {
     std::vector<unsigned int> triangleIndices({
         0, 1, 2,
     });
-    Shape* triangle = Shape()
+    Shape triangle = Shape()
         .vertices(triangleVertices)
-        ->indices(triangleIndices)
-        ->material(*material)
-        ->layouts(std::vector<unsigned int>({0, 1}))
-        ->build();
+        .indices(triangleIndices)
+        .material(material)
+        .layouts(std::vector<unsigned int>({0, 1}))
+        .build();
 
     // The shape is added to the renderer
-    renderer->add(*triangle);
+    renderer.add(triangle);
 
-    while (!(window->shouldClose())) {
-        renderer->clear();
-        renderer->render();
-        window->swapBuffers();
-        window->pollEvents();
+    while (!(window.shouldClose())) {
+        renderer.clear();
+        renderer.render();
+        window.swapBuffers();
+        window.pollEvents();
     }
 
     return 0;
