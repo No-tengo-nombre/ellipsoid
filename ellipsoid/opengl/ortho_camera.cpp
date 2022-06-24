@@ -30,50 +30,50 @@ OrthographicCamera::OrthographicCamera(const float xMin, const float xMax,
     _zMax = zMax;
 }
 
-OrthographicCamera* OrthographicCamera::setXMin(const float xMin) {
+OrthographicCamera& OrthographicCamera::setXMin(const float xMin) {
     _xMin = xMin;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setXMax(const float xMax) {
+OrthographicCamera& OrthographicCamera::setXMax(const float xMax) {
     _xMax = xMax;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setYMin(const float yMin) {
+OrthographicCamera& OrthographicCamera::setYMin(const float yMin) {
     _yMin = yMin;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setYMax(const float yMax) {
+OrthographicCamera& OrthographicCamera::setYMax(const float yMax) {
     _yMax = yMax;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setZMin(const float zMin) {
+OrthographicCamera& OrthographicCamera::setZMin(const float zMin) {
     _zMin = zMin;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setZMax(const float zMax) {
+OrthographicCamera& OrthographicCamera::setZMax(const float zMax) {
     _zMax = zMax;
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setPosition(const glm::vec3 position) {
+OrthographicCamera& OrthographicCamera::setPosition(const glm::vec3 position) {
     _position = position;
-    return this;
+    return *this;
 }
 
-OrthographicCamera*
+OrthographicCamera&
 OrthographicCamera::setDirection(const glm::vec3 direction) {
     _direction = glm::normalize(direction);
-    return this;
+    return *this;
 }
 
-OrthographicCamera* OrthographicCamera::setUp(const glm::vec3 up) {
+OrthographicCamera& OrthographicCamera::setUp(const glm::vec3 up) {
     _up = glm::normalize(up);
-    return this;
+    return *this;
 }
 
 glm::mat4 OrthographicCamera::getProjectionMatrix() const {

@@ -22,9 +22,9 @@ public:
     float getY() const { return _y; }
     float getZ() const { return _z; }
 
-    TransformComponent* setX(const float newX);
-    TransformComponent* setY(const float newY);
-    TransformComponent* setZ(const float newZ);
+    TransformComponent& setX(const float newX);
+    TransformComponent& setY(const float newY);
+    TransformComponent& setZ(const float newZ);
 
     glm::vec3 asVector() const;
 
@@ -57,7 +57,7 @@ public:
 
     glm::mat4 getTransformMatrix() const override;
 
-    TransformRotate* rotateAboutAxis(const float angle, const glm::vec3 axis);
+    TransformRotate& rotateAboutAxis(const float angle, const glm::vec3 axis);
     static glm::vec3 eulerAnglesFromMatrix(const glm::mat4 rotationMatrix);
     static glm::vec3 eulerAnglesFromMatrix(const glm::mat3 rotationMatrix);
 
@@ -97,16 +97,16 @@ public:
     TransformRotate const* getRotation() const { return &_rotation; }
     TransformScale const* getScaling() const { return &_scaling; }
 
-    Transform* setTranslation(const TransformTranslate* trans);
-    Transform* setRotation(const TransformRotate* rot);
-    Transform* setScaling(const TransformScale* scale);
+    Transform& setTranslation(const TransformTranslate& trans);
+    Transform& setRotation(const TransformRotate& rot);
+    Transform& setScaling(const TransformScale& scale);
 
-    Transform* translate(const glm::vec3 vector);
-    Transform* rotate(const glm::vec3 vector);
-    Transform* scale(const glm::vec3 vector);
-    Transform* translate(const float x, const float y, const float z);
-    Transform* rotate(const float x, const float y, const float z);
-    Transform* scale(const float x, const float y, const float z);
+    Transform& translate(const glm::vec3 vector);
+    Transform& rotate(const glm::vec3 vector);
+    Transform& scale(const glm::vec3 vector);
+    Transform& translate(const float x, const float y, const float z);
+    Transform& rotate(const float x, const float y, const float z);
+    Transform& scale(const float x, const float y, const float z);
 
     glm::mat4 getTransformMatrix() const;
 

@@ -22,9 +22,9 @@ public:
     Texture2D();
     Texture2D(const std::string path);
 
-    Texture2D* loadFromPath(const std::string path);
-    Texture2D* build();
-    Texture2D* build(unsigned int slot);
+    Texture2D& loadFromPath(const std::string path);
+    Texture2D& build();
+    Texture2D& build(unsigned int slot);
 
     void bind() const;
     void unbind() const;

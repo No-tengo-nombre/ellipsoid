@@ -7,17 +7,13 @@ Material::Material() {
     _shader = core::Shader();
 };
 
-Material::~Material() {
-    del();
-}
-
-Material* Material::setShader(const core::Shader shader) {
+Material& Material::setShader(const core::Shader shader) {
     _shader = shader;
-    return this;
+    return *this;
 }
 
-Material* Material::build() {
-    return this;
+Material& Material::build() {
+    return *this;
 }
 
 void Material::use() const {

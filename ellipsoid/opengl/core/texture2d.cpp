@@ -16,19 +16,19 @@ Texture2D::Texture2D(const std::string path) {
     _image->load(result._width, result._height, result._channels, result._data);
 }
 
-Texture2D* Texture2D::loadFromPath(const std::string path) {
+Texture2D& Texture2D::loadFromPath(const std::string path) {
     Image result = loadImage(path);
     _image = new Image;
     _image->load(result._width, result._height, result._channels, result._data);
-    return this;
+    return *this;
 }
 
-Texture2D* Texture2D::build() { return build(0); }
+Texture2D& Texture2D::build() { return build(0); }
 
-Texture2D* Texture2D::build(unsigned int slot) {
+Texture2D& Texture2D::build(unsigned int slot) {
     loadTexture(_id, slot, _image->_width, _image->_height, _image->_channels,
                 _image->_data);
-    return this;
+    return *this;
 }
 
 void Texture2D::bind() const { glBindTexture(GL_TEXTURE_2D, _id); }

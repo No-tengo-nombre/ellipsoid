@@ -31,21 +31,22 @@ private:
 
 public:
     Window();
+    // ~Window();
     Window(const unsigned int width, const unsigned int height,
            const std::string title, const WindowMode mode);
 
-    Window* dimensions(const unsigned int newWidth,
+    Window& dimensions(const unsigned int newWidth,
                        const unsigned int newHeight);
-    Window* width(const unsigned int newWidth);
-    Window* height(const unsigned int newHeight);
-    Window* title(const std::string newTitle);
-    Window* mode(const WindowMode newMode);
-    Window* windowed();
-    Window* fullScreen();
-    Window* glVersion(const unsigned int major, const unsigned int minor);
-    Window* profile(const int newProfile);
-    Window* depthTest(const bool condition);
-    Window* build();
+    Window& width(const unsigned int newWidth);
+    Window& height(const unsigned int newHeight);
+    Window& title(const std::string newTitle);
+    Window& mode(const WindowMode newMode);
+    Window& windowed();
+    Window& fullScreen();
+    Window& glVersion(const unsigned int major, const unsigned int minor);
+    Window& profile(const int newProfile);
+    Window& depthTest(const bool condition);
+    Window& build();
 
     bool shouldClose() const;
     void setShouldClose(const int condition);

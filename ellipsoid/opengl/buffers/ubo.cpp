@@ -10,26 +10,24 @@ UBO::UBO() {
     _usage = GL_STATIC_DRAW;
 }
 
-UBO::~UBO() { del(); }
-
-UBO* UBO::size(const unsigned int newSize) {
+UBO& UBO::size(const unsigned int newSize) {
     _size = newSize;
-    return this;
+    return *this;
 }
 
-UBO* UBO::usage(const GLenum newUsage) {
+UBO& UBO::usage(const GLenum newUsage) {
     _usage = newUsage;
-    return this;
+    return *this;
 }
 
-UBO* UBO::build() {
+UBO& UBO::build() {
     unsigned int ubo = 0;
     glGenBuffers(1, &ubo);
     glBindBuffer(GL_UNIFORM_BUFFER, ubo);
     glBufferData(GL_UNIFORM_BUFFER, _size, (void*)0, _usage);
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
     _id = ubo;
-    return this;
+    return *this;
 }
 
 void UBO::bindIndex(const unsigned int index) {

@@ -23,6 +23,10 @@ Window::Window() {
     _mode = WindowMode::Windowed;
 }
 
+// Window::~Window() {
+//     std::cout << "DESTROYING WINDOW" << std::endl;
+// }
+
 Window::Window(const unsigned int width, const unsigned int height,
                const std::string title, const WindowMode mode) {
     _width = width;
@@ -31,60 +35,60 @@ Window::Window(const unsigned int width, const unsigned int height,
     _mode = mode;
 }
 
-Window* Window::width(const unsigned int newWidth) {
+Window& Window::width(const unsigned int newWidth) {
     _width = newWidth;
-    return this;
+    return *this;
 }
 
-Window* Window::height(const unsigned int newHeight) {
+Window& Window::height(const unsigned int newHeight) {
     _height = newHeight;
-    return this;
+    return *this;
 }
 
-Window* Window::dimensions(const unsigned int newWidth,
+Window& Window::dimensions(const unsigned int newWidth,
                            const unsigned int newHeight) {
     _width = newWidth;
     _height = newHeight;
-    return this;
+    return *this;
 }
 
-Window* Window::title(const std::string newTitle) {
+Window& Window::title(const std::string newTitle) {
     _title = newTitle;
-    return this;
+    return *this;
 }
 
-Window* Window::mode(const WindowMode newMode) {
+Window& Window::mode(const WindowMode newMode) {
     _mode = newMode;
-    return this;
+    return *this;
 }
 
-Window* Window::windowed() {
+Window& Window::windowed() {
     _mode = WindowMode::Windowed;
-    return this;
+    return *this;
 }
 
-Window* Window::fullScreen() {
+Window& Window::fullScreen() {
     _mode = WindowMode::FullScreen;
-    return this;
+    return *this;
 }
 
-Window* Window::glVersion(const unsigned int major, const unsigned int minor) {
+Window& Window::glVersion(const unsigned int major, const unsigned int minor) {
     _glVersionMajor = major;
     _glVersionMinor = minor;
-    return this;
+    return *this;
 }
 
-Window* Window::profile(const int newProfile) {
+Window& Window::profile(const int newProfile) {
     _glProfile = newProfile;
-    return this;
+    return *this;
 }
 
-Window* Window::depthTest(const bool condition) {
+Window& Window::depthTest(const bool condition) {
     _depthTest = condition;
-    return this;
+    return *this;
 }
 
-Window* Window::build() {
+Window& Window::build() {
     init();
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, _glVersionMajor);
@@ -122,7 +126,7 @@ Window* Window::build() {
         glEnable(GL_DEPTH_TEST);
 
     _glfwWindow = window;
-    return this;
+    return *this;
 }
 
 bool Window::shouldClose() const { return glfwWindowShouldClose(_glfwWindow); }

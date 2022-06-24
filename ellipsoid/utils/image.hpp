@@ -16,7 +16,7 @@ public:
     Image();
     Image(const int width, const int height, const int channels,
           unsigned char* data);
-    ~Image();
+//     ~Image();
 
     void load(const int width, const int height, const int channels,
               unsigned char* data);

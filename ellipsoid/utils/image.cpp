@@ -29,7 +29,7 @@ void Image::load(const int width, const int height, const int channels,
     _data = data;
 }
 
-Image::~Image() { stbi_image_free(_data); }
+// Image::~Image() { stbi_image_free(_data); }
 
 Image loadImage(const std::string path) {
     int width;

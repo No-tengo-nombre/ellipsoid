@@ -16,73 +16,69 @@ Shape::Shape() {
     _count = 0;
 }
 
-Shape::~Shape() {
-    del();
-}
-
-Shape* Shape::material(const Material material) {
+Shape& Shape::material(const Material material) {
     _material = material;
-    return this;
+    return *this;
 }
 
-Shape* Shape::texture(const Texture2D texture) {
+Shape& Shape::texture(const Texture2D texture) {
     _texture = texture;
-    return this;
+    return *this;
 }
 
-Shape* Shape::vertices(const std::vector<float> verts) {
+Shape& Shape::vertices(const std::vector<float> verts) {
     _vertices = verts;
-    return this;
+    return *this;
 }
 
-Shape* Shape::indices(const std::vector<unsigned int> inds) {
+Shape& Shape::indices(const std::vector<unsigned int> inds) {
     _indices = inds;
-    return this;
+    return *this;
 }
 
-Shape* Shape::layouts(const std::vector<unsigned int> lays) {
+Shape& Shape::layouts(const std::vector<unsigned int> lays) {
     _layouts = lays;
-    return this;
+    return *this;
 }
 
-Shape* Shape::vertSizes(const std::vector<unsigned int> sizes) {
+Shape& Shape::vertSizes(const std::vector<unsigned int> sizes) {
     _vertSizes = sizes;
-    return this;
+    return *this;
 }
 
-Shape* Shape::count(const unsigned int newCount) {
+Shape& Shape::count(const unsigned int newCount) {
     _count = newCount;
-    return this;
+    return *this;
 }
 
-Shape* Shape::usage(const GLenum newUsage) {
+Shape& Shape::usage(const GLenum newUsage) {
     _usage = newUsage;
-    return this;
+    return *this;
 }
 
-Shape* Shape::drawMode(const GLenum newDrawMode) {
+Shape& Shape::drawMode(const GLenum newDrawMode) {
     _drawMode = newDrawMode;
-    return this;
+    return *this;
 }
 
-Shape* Shape::build() {
-    VAO* vao = VAO().stride<float>()->sizes(_vertSizes)->build();
-    vao->bind();
-    VBO* vbo = VBO().vertices(_vertices)->usage(_usage)->build();
-    vbo->bind();
-    EBO* ebo = EBO().indices(_indices)->count(_count)->usage(_usage)->build();
+Shape& Shape::build() {
+    VAO vao = VAO().stride<float>().sizes(_vertSizes).build();
+    vao.bind();
+    VBO vbo = VBO().vertices(_vertices).usage(_usage).build();
+    vbo.bind();
+    EBO ebo = EBO().indices(_indices).count(_count).usage(_usage).build();
 
     for (unsigned int l : _layouts) {
-        vao->linkVBO(vbo, l);
+        vao.linkVBO(&vbo, l);
     }
 
-    vao->unbind();
-    vbo->unbind();
-    ebo->unbind();
-    _vao = *vao;
-    _ebo = *ebo;
+    vao.unbind();
+    vbo.unbind();
+    ebo.unbind();
+    _vao = vao;
+    _ebo = ebo;
 
-    return this;
+    return *this;
 }
 
 void Shape::useMaterial() const {

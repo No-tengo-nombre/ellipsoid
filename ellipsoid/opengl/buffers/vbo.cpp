@@ -10,26 +10,24 @@ VBO::VBO() {
     _usage = GL_STATIC_DRAW;
 }
 
-VBO::~VBO() { del(); }
-
-VBO* VBO::vertices(std::vector<float> newVertices) {
+VBO& VBO::vertices(std::vector<float> newVertices) {
     _vertices = newVertices;
-    return this;
+    return *this;
 }
 
-VBO* VBO::usage(GLenum newUsage) {
+VBO& VBO::usage(GLenum newUsage) {
     _usage = newUsage;
-    return this;
+    return *this;
 }
 
-VBO* VBO::build() {
+VBO& VBO::build() {
     unsigned int vbo = 0;
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     bufferData(_vertices);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     _id = vbo;
-    return this;
+    return *this;
 }
 
 void VBO::bufferData(std::vector<float> data) {

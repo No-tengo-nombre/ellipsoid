@@ -29,21 +29,20 @@ private:
 
 public:
     Shape();
-    ~Shape();
 
     GLenum getDrawMode() const { return _drawMode; };
 
-    Shape* material(const Material material);
-    Shape* texture(const Texture2D texture);
-    Shape* vertices(const std::vector<float> verts);
-    Shape* indices(const std::vector<unsigned int> inds);
-    Shape* layouts(const std::vector<unsigned int> lays);
-    Shape* vertSizes(const std::vector<unsigned int> sizes);
-    Shape* count(const unsigned int newCount);
-    Shape* usage(const GLenum newUsage);
-    Shape* drawMode(const GLenum newDrawMode);
+    Shape& material(const Material material);
+    Shape& texture(const Texture2D texture);
+    Shape& vertices(const std::vector<float> verts);
+    Shape& indices(const std::vector<unsigned int> inds);
+    Shape& layouts(const std::vector<unsigned int> lays);
+    Shape& vertSizes(const std::vector<unsigned int> sizes);
+    Shape& count(const unsigned int newCount);
+    Shape& usage(const GLenum newUsage);
+    Shape& drawMode(const GLenum newDrawMode);
 
-    Shape* build();
+    Shape& build();
 
     void useMaterial() const;
     void bindVAO() const;

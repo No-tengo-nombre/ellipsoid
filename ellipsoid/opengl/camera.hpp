@@ -61,15 +61,15 @@ public:
     OrthographicCamera(const float xMin, const float xMax, const float yMin,
                        const float yMax, const float zMin, const float zMax);
 
-    OrthographicCamera* setXMin(const float xMin);
-    OrthographicCamera* setXMax(const float xMax);
-    OrthographicCamera* setYMin(const float yMin);
-    OrthographicCamera* setYMax(const float yMax);
-    OrthographicCamera* setZMin(const float zMin);
-    OrthographicCamera* setZMax(const float zMax);
-    OrthographicCamera* setPosition(const glm::vec3 position);
-    OrthographicCamera* setDirection(const glm::vec3 direction);
-    OrthographicCamera* setUp(const glm::vec3 up);
+    OrthographicCamera& setXMin(const float xMin);
+    OrthographicCamera& setXMax(const float xMax);
+    OrthographicCamera& setYMin(const float yMin);
+    OrthographicCamera& setYMax(const float yMax);
+    OrthographicCamera& setZMin(const float zMin);
+    OrthographicCamera& setZMax(const float zMax);
+    OrthographicCamera& setPosition(const glm::vec3 position);
+    OrthographicCamera& setDirection(const glm::vec3 direction);
+    OrthographicCamera& setUp(const glm::vec3 up);
 
     glm::mat4 getProjectionMatrix() const override;
 };
@@ -88,15 +88,15 @@ public:
     PerspectiveCamera(const float xMin, const float xMax, const float yMin,
                       const float yMax, const float zMin, const float zMax);
 
-    PerspectiveCamera* setXMin(const float xMin);
-    PerspectiveCamera* setXMax(const float xMax);
-    PerspectiveCamera* setYMin(const float yMin);
-    PerspectiveCamera* setYMax(const float yMax);
-    PerspectiveCamera* setZMin(const float zMin);
-    PerspectiveCamera* setZMax(const float zMax);
-    PerspectiveCamera* setPosition(const glm::vec3 position);
-    PerspectiveCamera* setDirection(const glm::vec3 direction);
-    PerspectiveCamera* setUp(const glm::vec3 up);
+    PerspectiveCamera& setXMin(const float xMin);
+    PerspectiveCamera& setXMax(const float xMax);
+    PerspectiveCamera& setYMin(const float yMin);
+    PerspectiveCamera& setYMax(const float yMax);
+    PerspectiveCamera& setZMin(const float zMin);
+    PerspectiveCamera& setZMax(const float zMax);
+    PerspectiveCamera& setPosition(const glm::vec3 position);
+    PerspectiveCamera& setDirection(const glm::vec3 direction);
+    PerspectiveCamera& setUp(const glm::vec3 up);
 
     glm::mat4 getProjectionMatrix() const override;
 };

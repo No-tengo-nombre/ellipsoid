@@ -6,9 +6,9 @@ namespace ellipsoid {
 namespace gl {
 
 UBO Camera::makeUBO() {
-    UBO* ubo = UBO().size(64)->build();
-    ubo->bindIndex(ELLIPSOID_GL_CAMERA_UBO_INDEX);
-    return *ubo;
+    UBO ubo = UBO().size(64).build();
+    ubo.bindIndex(ELLIPSOID_GL_CAMERA_UBO_INDEX);
+    return ubo;
 }
 
 glm::vec3 Camera::calculatePosition() const {

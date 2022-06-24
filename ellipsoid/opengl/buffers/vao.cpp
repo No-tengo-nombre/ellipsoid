@@ -11,36 +11,34 @@ VAO::VAO() {
     _sizes = std::vector<unsigned int>();
 }
 
-VAO::~VAO() { del(); }
-
-VAO* VAO::stride(unsigned int newStride) {
+VAO& VAO::stride(unsigned int newStride) {
     _stride = newStride;
-    return this;
+    return *this;
 }
 
-template <typename T> VAO* VAO::stride() {
+template <typename T> VAO& VAO::stride() {
     _stride = sizeof(T);
-    return this;
+    return *this;
 }
 
-template VAO* VAO::stride<float>();
+template VAO& VAO::stride<float>();
 
-VAO* VAO::size(unsigned int newSize) {
+VAO& VAO::size(unsigned int newSize) {
     _size = newSize;
-    return this;
+    return *this;
 }
 
-VAO* VAO::sizes(std::vector<unsigned int> newSizes) {
+VAO& VAO::sizes(std::vector<unsigned int> newSizes) {
     _sizes = newSizes;
-    return this;
+    return *this;
 }
 
-VAO* VAO::build() {
+VAO& VAO::build() {
     unsigned int vao = 0;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     _id = vao;
-    return this;
+    return *this;
 }
 
 void VAO::linkVBO(VBO* vbo, unsigned int layout) const {

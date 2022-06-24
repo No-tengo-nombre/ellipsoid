@@ -33,19 +33,19 @@ TransformComponent::TransformComponent(const float x, const float y,
     _z = z;
 }
 
-TransformComponent* TransformComponent::setX(const float newX) {
+TransformComponent& TransformComponent::setX(const float newX) {
     _x = newX;
-    return this;
+    return *this;
 }
 
-TransformComponent* TransformComponent::setY(const float newY) {
+TransformComponent& TransformComponent::setY(const float newY) {
     _y = newY;
-    return this;
+    return *this;
 }
 
-TransformComponent* TransformComponent::setZ(const float newZ) {
+TransformComponent& TransformComponent::setZ(const float newZ) {
     _z = newZ;
-    return this;
+    return *this;
 }
 
 glm::vec3 TransformComponent::asVector() const {
@@ -95,7 +95,7 @@ glm::mat4 TransformRotate::getTransformMatrix() const {
     return glm::rotate(yMatrix, _z, glm::vec3(0.0f, 0.0f, 1.0f));
 }
 
-TransformRotate* TransformRotate::rotateAboutAxis(const float angle,
+TransformRotate& TransformRotate::rotateAboutAxis(const float angle,
                                                   const glm::vec3 axis) {
     TransformRotate* newTrans;
 
@@ -107,7 +107,8 @@ TransformRotate* TransformRotate::rotateAboutAxis(const float angle,
     float y = eulerAngles[1];
     float z = eulerAngles[2];
 
-    return (TransformRotate*)newTrans->setX(x)->setY(y)->setZ(z);
+    // Kinda wacky code
+    return *(TransformRotate*)(&newTrans->setX(x).setY(y).setZ(z));
 }
 
 glm::vec3
@@ -207,50 +208,50 @@ Transform::Transform() {
     _scaling = TransformScale();
 }
 
-Transform* Transform::setTranslation(const TransformTranslate* trans) {
-    _translation = *trans;
-    return this;
+Transform& Transform::setTranslation(const TransformTranslate& trans) {
+    _translation = trans;
+    return *this;
 }
 
-Transform* Transform::setRotation(const TransformRotate* rot) {
-    _rotation = *rot;
-    return this;
+Transform& Transform::setRotation(const TransformRotate& rot) {
+    _rotation = rot;
+    return *this;
 }
 
-Transform* Transform::setScaling(const TransformScale* scale) {
-    _scaling = *scale;
-    return this;
+Transform& Transform::setScaling(const TransformScale& scale) {
+    _scaling = scale;
+    return *this;
 }
 
-Transform* Transform::translate(const glm::vec3 vector) {
+Transform& Transform::translate(const glm::vec3 vector) {
     _translation += TransformTranslate(vector);
-    return this;
+    return *this;
 }
 
-Transform* Transform::rotate(const glm::vec3 vector) {
+Transform& Transform::rotate(const glm::vec3 vector) {
     _rotation += TransformRotate(vector);
-    return this;
+    return *this;
 }
 
-Transform* Transform::scale(const glm::vec3 vector) {
+Transform& Transform::scale(const glm::vec3 vector) {
     _scaling += TransformScale(vector);
-    return this;
+    return *this;
 }
 
 
-Transform* Transform::translate(const float x, const float y, const float z) {
+Transform& Transform::translate(const float x, const float y, const float z) {
     _translation += TransformTranslate(x, y, z);
-    return this;
+    return *this;
 }
 
-Transform* Transform::rotate(const float x, const float y, const float z) {
+Transform& Transform::rotate(const float x, const float y, const float z) {
     _rotation += TransformRotate(x, y, z);
-    return this;
+    return *this;
 }
 
-Transform* Transform::scale(const float x, const float y, const float z) {
+Transform& Transform::scale(const float x, const float y, const float z) {
     _scaling += TransformScale(x, y, z);
-    return this;
+    return *this;
 }
 
 glm::mat4 Transform::getTransformMatrix() const {

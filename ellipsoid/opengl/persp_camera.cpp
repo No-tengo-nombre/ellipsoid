@@ -30,49 +30,49 @@ PerspectiveCamera::PerspectiveCamera(const float xMin, const float xMax,
     _zMax = zMax;
 }
 
-PerspectiveCamera* PerspectiveCamera::setXMin(const float xMin) {
+PerspectiveCamera& PerspectiveCamera::setXMin(const float xMin) {
     _xMin = xMin;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setXMax(const float xMax) {
+PerspectiveCamera& PerspectiveCamera::setXMax(const float xMax) {
     _xMax = xMax;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setYMin(const float yMin) {
+PerspectiveCamera& PerspectiveCamera::setYMin(const float yMin) {
     _yMin = yMin;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setYMax(const float yMax) {
+PerspectiveCamera& PerspectiveCamera::setYMax(const float yMax) {
     _yMax = yMax;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setZMin(const float zMin) {
+PerspectiveCamera& PerspectiveCamera::setZMin(const float zMin) {
     _zMin = zMin;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setZMax(const float zMax) {
+PerspectiveCamera& PerspectiveCamera::setZMax(const float zMax) {
     _zMax = zMax;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setPosition(const glm::vec3 position) {
+PerspectiveCamera& PerspectiveCamera::setPosition(const glm::vec3 position) {
     _position = position;
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setDirection(const glm::vec3 direction) {
+PerspectiveCamera& PerspectiveCamera::setDirection(const glm::vec3 direction) {
     _direction = glm::normalize(direction);
-    return this;
+    return *this;
 }
 
-PerspectiveCamera* PerspectiveCamera::setUp(const glm::vec3 up) {
+PerspectiveCamera& PerspectiveCamera::setUp(const glm::vec3 up) {
     _up = glm::normalize(up);
-    return this;
+    return *this;
 }
 
 glm::mat4 PerspectiveCamera::getProjectionMatrix() const {

@@ -12,10 +12,9 @@ private:
 
 public:
     Material();
-    ~Material();
 
-    Material* setShader(const core::Shader shader);
-    Material* build();
+    Material& setShader(const core::Shader shader);
+    Material& build();
 
     void use() const;
     void del() const;

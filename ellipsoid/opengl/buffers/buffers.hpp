@@ -17,13 +17,12 @@ private:
 
 public:
     VBO();
-    ~VBO();
 
     unsigned int getId() { return _id; };
 
-    VBO* vertices(std::vector<float> newVertices);
-    VBO* usage(GLenum newUsage);
-    VBO* build();
+    VBO& vertices(std::vector<float> newVertices);
+    VBO& usage(GLenum newUsage);
+    VBO& build();
 
     void bufferData(std::vector<float> data);
 
@@ -41,15 +40,14 @@ private:
 
 public:
     VAO();
-    ~VAO();
 
     unsigned int getId() { return _id; };
 
-    VAO* stride(unsigned int newStride);
-    template <typename T> VAO* stride();
-    VAO* size(unsigned int newSize);
-    VAO* sizes(std::vector<unsigned int> newSizes);
-    VAO* build();
+    VAO& stride(unsigned int newStride);
+    template <typename T> VAO& stride();
+    VAO& size(unsigned int newSize);
+    VAO& sizes(std::vector<unsigned int> newSizes);
+    VAO& build();
 
     void linkVBO(VBO* vbo, unsigned int layout) const;
 
@@ -67,14 +65,13 @@ private:
 
 public:
     EBO();
-    ~EBO();
 
     unsigned int getId() { return _id; };
 
-    EBO* count(unsigned int newCount);
-    EBO* indices(std::vector<unsigned int> newIndices);
-    EBO* usage(GLenum newUsage);
-    EBO* build();
+    EBO& count(unsigned int newCount);
+    EBO& indices(std::vector<unsigned int> newIndices);
+    EBO& usage(GLenum newUsage);
+    EBO& build();
 
     void bufferData(std::vector<unsigned int> data);
 
@@ -91,13 +88,12 @@ private:
 
 public:
     UBO();
-    ~UBO();
 
     unsigned int getId() { return _id; };
 
-    UBO* size(const unsigned int newSize);
-    UBO* usage(const GLenum newUsage);
-    UBO* build();
+    UBO& size(const unsigned int newSize);
+    UBO& usage(const GLenum newUsage);
+    UBO& build();
 
     void bindIndex(const unsigned int index);
     template <typename T>
